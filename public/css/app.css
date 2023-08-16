@@ -187,11 +187,16 @@ span{
 }
 
 .log-div{
-    width: 500px;
+    width: 540px;
     display: flex;
     /* flex-direction: row; */
     justify-content: space-between;
-    margin-left: 97.5px;
+    margin-left: 80.5px;
+}
+
+.log-div1{
+    width: 540px;
+    margin-left: 80.5px;
 }
 
 .lab{
@@ -201,6 +206,10 @@ span{
     font-style: normal;
     font-weight: 800;
     line-height: 40px; /* 148.148% */
+}
+
+.form-pass{
+    margin-top: -20px;
 }
 
 #email{
@@ -673,7 +682,7 @@ hr{
 
 .add-event-input{
     width: 250px;
-    height: 28px;
+    height: 32px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEFEFE;

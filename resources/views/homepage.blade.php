@@ -16,6 +16,6 @@
             <img src="{{ asset('images/image1.png') }}" alt="image" id="image">
         </div>
     </div>
-</section>
+</section> 
 
 @endsection

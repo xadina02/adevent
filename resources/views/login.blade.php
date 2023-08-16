@@ -19,15 +19,15 @@
             </div>
             <br><br>
             <div class="log-div">
-                <a href="" class="form-link">Forgot Password</a>
-                <a href="" class="form-link">Don't have an account</a>
+                <a href="{{ route('forgotpasswd') }}" class="form-link">Forgot Password</a>
+                <a href="{{ route('homepage') }}" class="form-link">Don't have an account</a>
             </div>
             <br>
             <div>
                 <a href="{{ route('signup') }}"><button id="sect-button">CONFIRM</button></a>
             </div>
         </form>
-   </div>
+   </div><br>
 </section>
 
 @endsection

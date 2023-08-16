@@ -18,6 +18,6 @@ class PagesController extends Controller
 
     public function fpassd()
     {
-        //return forgot password page
+        return view('forgot_password');
     }
 }

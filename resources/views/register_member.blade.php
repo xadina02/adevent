@@ -33,7 +33,7 @@
                         <br>
                     </div>
 
-                    <a href=""><button id="search-button">Register</button></a>
+                    <button id="search-button">Register</button>
                 </form>
             </div>
         </div>

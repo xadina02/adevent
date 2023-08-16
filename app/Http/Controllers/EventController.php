@@ -22,7 +22,7 @@ class EventController extends Controller
 
     public function show()
     {
-        // return edit event view
+        return view('edit_event');
     }
 
     public function create()

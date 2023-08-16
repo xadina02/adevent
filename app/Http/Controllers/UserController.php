@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function show()
     {
-        // return edit member view
+        return view('edit_member');
     }
 
     public function create()
