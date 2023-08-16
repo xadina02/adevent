@@ -14,20 +14,36 @@
             <div class="participant-content1">
                 <div>
                     <img src="" alt="">
-                    <h2></h2>
+                    <h2>EVENT NAME</h2>
                 </div>
                 <hr>
-                <div></div>
+                <div class="participant-info">
+                    <div class="participant-info-box">
+                        <img src="" alt="">
+                        <div class="participant-name">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="participant-content2">
                 <div class="content2-first">
                     <div>
                         <img src="" alt="">
-                        <h2></h2>
+                        <h2>EVENT NAME</h2>
                     </div>
                     <hr>
-                    <div></div>
+                    <div class="participant-info">
+                        <div class="participant-info-box">
+                            <img src="" alt="">
+                            <div class="participant-name">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <a href=""><button>Remove</button></a>
                 </div>
