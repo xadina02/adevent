@@ -20,15 +20,17 @@
                 </div>
                 <div class="down-box">
                     <hr>
+                    @foreach($participants as $particip)
                     <div class="participant-info">
                         <div class="participant-info-box">
                             <img src="" alt="" class="icon-parti">
                             <div class="participant-name">
-                                <h3></h3>
-                                <p></p>
+                                <h3>{{ strtoupper($particip['name']) }}</h3>
+                                <p>{{ $particip['email'] }}</p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     </div>
             </div>
 
