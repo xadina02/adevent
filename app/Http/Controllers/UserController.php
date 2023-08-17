@@ -24,7 +24,8 @@ class UserController extends Controller
 
     public function show()
     {
-        return view('edit_member');
+        $data = ['name'=>'Adina Sakwe', 'email'=>'amosongodina@gmail.com'];
+        return view('edit_member', compact('data'));
     }
 
     public function create()

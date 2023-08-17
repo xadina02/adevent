@@ -13,7 +13,7 @@
                                 <label for="" class="add-member-label">Event Title: </label>
                                 <input type="text" class="add-member-input" placeholder="Type Here...">
                             </div>
-                            <br>
+                            <br><br>
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Description: </label>
                                 <textarea name="" id="" cols="70" rows="10" class="add-member-input1"></textarea>

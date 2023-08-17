@@ -11,12 +11,12 @@
                         <div class="add-event-top1">
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Event Title: </label>
-                                <input type="text" class="add-member-input" placeholder="Type Here...">
+                                <input type="text" class="add-member-input" placeholder="{{ $data['title'] }}">
                             </div>
                             <br>
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Description: </label>
-                                <textarea name="" id="" cols="70" rows="10" class="add-member-input1"></textarea>
+                                <textarea name="" id="" cols="70" rows="10" class="add-member-input1" placeholder="{{ $data['description'] }}"></textarea>
                             </div>
                         </div>
                         <div class="add-event-top2">

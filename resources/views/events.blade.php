@@ -10,7 +10,7 @@
                         <div id="search">
                             <div id="search-bar">
                                 <img src="" alt="" id="search-image">
-                                <input type="text" placeholder="Name" id="search-input">
+                                <input type="text" placeholder="Title" id="search-input">
                             </div>
                             <a href=""><button id="search-button">Search</button></a>
                         </div>

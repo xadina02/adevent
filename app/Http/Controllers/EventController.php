@@ -22,7 +22,8 @@ class EventController extends Controller
 
     public function show()
     {
-        return view('edit_event');
+        $data = ['title'=>'DEMO TIME', 'description'=>'We are going to demonstrate our progress in each task we perfom! Let us grow'];
+        return view('edit_event', compact('data'));
     }
 
     public function create()
