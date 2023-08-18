@@ -1,6 +1,7 @@
 @extends('layouts.event')
 
 @section('content')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <section id="section3">
         <div class="participant-house">
             <div class="participant-title">
@@ -79,19 +80,47 @@
                         <div class="add-event-part">
                             <div class="add-event-part-top">
                                 <div>
-                                    <img src="{{ asset('images/add.png') }}" alt="add" id="add">
+                                    <img src="{{ asset('images/add.png') }}" alt="add" id="add" class="adding">
                                 </div>
                                 <div>
                                     <p class="ding">App Participants</p>
                                 </div>
                             </div>
                             <hr id="hr1">
-                            <div>
-                                <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p>
+                            <div id="parts-add" class="parts-adding" style="display: block;">
+                                <div id="search1">
+                                    <div id="search-bar1">
+                                        <img src="" alt="">
+                                        <input type="text" placeholder="Name" id="search-input1">
+                                    </div>
+
+                                    <a href=""><button id="search-button1">Search</button></a>
+                                </div>
+                                <form action="">
+                                    <hr id="hr2">
+                                    <div id="scroll-mini">
+                                        <div class="member-vals3">
+                                            <div class="mv3">
+                                                <input type="checkbox">
+                                                <img src="" alt="">
+                                                <div class="name3">
+                                                    <p class="p13"></p>
+                                                    <p class="p23"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="scroll-mini-butt">Select</button>
+                                </form>
+                            </div>
+                            <div id="parts-add2" class="parts-adding" style="display: none;">
+                                <div>
+                                    <!-- <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p> -->
+                                </div>
+                                <br><br><br><br><br><br><br>
+                                <button id="add-butt">Add</button>
                             </div>
                         </div>
-                        <br><br><br><br><br>
-                        <button id="add-butt">Add</button>
                     </form>
                 </div>
                 </div>
@@ -130,5 +159,22 @@
             activeContent.style.display = 'none';
         }
         }
+
+        $(document).ready(function() {
+        $(".adding").click(function() {
+            var content1 = $("#parts-add2");
+            var content2 = $("#parts-add");
+
+            if (content1.is(":visible")) {
+            content1.slideUp();
+            content2.slideDown();
+            } else {
+            content2.slideUp();
+            content1.slideDown();
+            }
+        });
+        });
+    
     </script>
+
 @endsection
