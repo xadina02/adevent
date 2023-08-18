@@ -99,17 +99,20 @@
                                 <form action="">
                                     <hr id="hr2">
                                     <div id="scroll-mini">
-                                        <div class="member-vals3">
-                                            <div class="mv3">
-                                                <input type="checkbox">
-                                                <img src="" alt="">
-                                                <div class="name3">
-                                                    <p class="p13"></p>
-                                                    <p class="p23"></p>
+                                        <!--Perform foreach() loop here-->
+                                            <div class="member-vals3">
+                                                <div class="mv3">
+                                                    <input type="checkbox">
+                                                    <img src="" alt=""><!--Decoding format of avatar-->
+                                                    <div class="name3">
+                                                        <p class="p13"><!--Name--></p>
+                                                        <p class="p23"><!--Email--></p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <!--br-->
+                                        <!--End foreach loop here-->
+                                    </div><p></p>
                                     <button id="scroll-mini-butt">Select</button>
                                 </form>
                             </div>

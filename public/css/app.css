@@ -997,7 +997,7 @@ width: 90%;
 #scroll-mini{
     text-align: center;
     width: 100%;
-    height: 320px;
+    height: 240px;
     overflow: auto;
 }
 
@@ -1025,7 +1025,7 @@ width: 90%;
 .p13{
     color: #000;
     font-family: Inknut Antiqua;
-    font-size: 20px;
+    font-size: 17px;
     font-style: normal;
     font-weight: 500;
 }
@@ -1033,7 +1033,20 @@ width: 90%;
 .p23{
     color: #770A3E;
     font-family: Inknut Antiqua;
-    font-size: 16px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#scroll-mini-butt{
+    width: 120px;
+    height: 33px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #770A3E;
+    color: #FFF;
+    font-family: Inknut Antiqua;
+    font-size: 19px;
     font-style: normal;
     font-weight: 500;
 }
