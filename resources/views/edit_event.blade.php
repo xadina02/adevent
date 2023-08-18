@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </form>
-                <br>
+                <br><br>
                 <button id="search-button">Update</button>
             </div>
         </div>

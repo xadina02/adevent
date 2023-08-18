@@ -595,7 +595,7 @@ hr{
     border-radius: 10px;
     background: rgba(202, 202, 202, 0.30);
     width: 80%;
-    height: 370px;
+    height: 390px;
     padding: 20px;
     margin-left: 8.5%;
     margin-top: -10px;
@@ -709,7 +709,7 @@ hr{
     flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
-    /* background-color: #700; */
+    /* background-color: #CABCC#; */
 }
 
 #add{
@@ -943,12 +943,12 @@ hr{
     margin-bottom: 200px;
 }
 
-#parts-add{
+#parts-add, #parts-addin1{
     border-radius: 10px;
     margin-top: -5px;
     background: #CABCC3;
     width: 400px;
-    height: 355px;
+    height: 300px;
 }
 
 #search1{
@@ -1001,25 +1001,40 @@ width: 90%;
     overflow: auto;
 }
 
+#scroll-minii{
+    text-align: center;
+    width: 100%;
+    height: 185px;
+    overflow: auto;
+}
+
 .member-vals3{
     width: 90%;
     height: 50px;
     flex-shrink: 0;
     border-radius: 5px;
     background: #e7e5e5;
-    margin-left: 5%;
+    margin-left: 7%;
 }
 
 .mv3{
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 8%;
     height: 50px;
     display: flex;
+    justify-content: space-between;
 }
 
 .name3{
     text-align: left;
-    width: 100px;
+    width: 230px;
+    margin-top: -10px;
+}
+
+#icon3{
+    width: 45px;
+    height: 45px;
+    margin-top: 3px;
 }
 
 .p13{
@@ -1036,6 +1051,7 @@ width: 90%;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
+    margin-top: -17px;
 }
 
 #scroll-mini-butt{

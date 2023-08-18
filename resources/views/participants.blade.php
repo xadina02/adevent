@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <hr id="hr1">
-                            <div id="parts-add" class="parts-adding" style="display: block;">
+                            <div id="parts-add" class="parts-adding" style="display: none;">
                                 <div id="search1">
                                     <div id="search-bar1">
                                         <img src="" alt="">
@@ -99,26 +99,26 @@
                                 <form action="">
                                     <hr id="hr2">
                                     <div id="scroll-mini">
-                                        <!--Perform foreach() loop here-->
+                                        @foreach($members as $member)
                                             <div class="member-vals3">
                                                 <div class="mv3">
-                                                    <input type="checkbox">
-                                                    <img src="" alt=""><!--Decoding format of avatar-->
+                                                    <input type="checkbox" value="$member['id']">
+                                                    <img src="data:image/svg+xml;base64,{{ base64_encode($member['avatar']) }}" alt="" id="icon3">
                                                     <div class="name3">
-                                                        <p class="p13"><!--Name--></p>
-                                                        <p class="p23"><!--Email--></p>
+                                                        <p class="p13">{{ strtoupper($member['name']) }}</p>
+                                                        <p class="p23">{{ $member['email'] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--br-->
-                                        <!--End foreach loop here-->
+                                            <br>
+                                        @endforeach
                                     </div><p></p>
-                                    <button id="scroll-mini-butt">Select</button>
+                                    <button id="scroll-mini-butt" class="addingg">Select</button>
                                 </form>
                             </div>
-                            <div id="parts-add2" class="parts-adding" style="display: none;">
+                            <div id="parts-add2" class="parts-adding" style="display: block;">
                                 <div>
-                                    <!-- <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p> -->
+                                    <p></p>
                                 </div>
                                 <br><br><br><br><br><br><br>
                                 <button id="add-butt">Add</button>
@@ -173,6 +173,18 @@
             content2.slideDown();
             } else {
             content2.slideUp();
+            content1.slideDown();
+            }
+        });
+        });
+
+        $(document).ready(function() {
+        $(".addingg").click(function() {
+            var content1 = $("#parts-add");
+
+            if (content1.is(":visible")) {
+            content1.slideUp();
+            } else {
             content1.slideDown();
             }
         });

@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 class EventController extends Controller
 {
     public function form()
     {
-        return view('add_event');
+        $members = User::where('role', '=', 'member')
+                ->orderBy('id', 'desc')
+                ->get();
+
+        return view('add_event', compact('members'));
     }
 
     public function display()

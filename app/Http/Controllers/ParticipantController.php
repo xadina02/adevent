@@ -25,7 +25,11 @@ class ParticipantController extends Controller
             // array_push($partspantemail, $participants['email']);
         }
 
-        return view('participants', compact('participants'));
+        $members = User::where('role', '=', 'member')
+                ->orderBy('id', 'desc')
+                ->get();
+
+        return view('participants', compact('participants', 'members'));
         // return view('participants');
     }
 
