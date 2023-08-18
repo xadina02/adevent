@@ -25,9 +25,10 @@ class EventController extends Controller
         return view('events', compact('events'));
     }
 
-    public function show()
+    public function show($id)
     {
-        $data = ['title'=>'DEMO TIME', 'description'=>'We are going to demonstrate our progress in each task we perfom! Let us grow'];
+        $data = Event::where('id', '=', $id)
+                ->first(['id', 'title', 'description', 'start date', 'start time', 'end date', 'end time']);
         return view('edit_event', compact('data'));
     }
 

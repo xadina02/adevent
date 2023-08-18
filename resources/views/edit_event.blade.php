@@ -23,22 +23,22 @@
                             
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">Start Date: </label>
-                                <input type="date" class="add-event-input">
+                                <input type="date" class="add-event-input" placeholder="{{ $data['start date'] }}">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">Start Time: </label>
-                                <input type="time" class="add-event-input">
+                                <input type="time" class="add-event-input" placeholder="{{ $data['start time'] }}">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">End Date: </label>
-                                <input type="date" class="add-event-input">
+                                <input type="date" class="add-event-input" placeholder="{{ $data['end date'] }}">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">End Time: </label>
-                                <input type="time" class="add-event-input">
+                                <input type="time" class="add-event-input" placeholder="{{ $data['end time'] }}">
                             </div>
                         </div>
                     </div>

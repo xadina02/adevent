@@ -32,7 +32,7 @@
 
                         <div class="second">
                             <div>
-                                <a href="{{ route('members/edit') }}"><button id="update">Update</button></a>
+                                <a href="{{ route('members/edit', ['id' => $member['id']]) }}"><button id="update">Update</button></a>
                             </div>
                             <div>
                                 <a href=""><button id="delete">Delete</button></a>

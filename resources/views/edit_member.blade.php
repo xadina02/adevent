@@ -4,7 +4,7 @@
 
     <section id="section1">
         <div id="add-member-sect">
-            <h2 id="add-member-head">EDIT - [MEMBER NAME]</h2>
+            <h2 id="add-member-head">EDIT - {{ strtoupper($data['name']) }}</h2>
             
             <div id="add-member-box">
                 <form action="">
@@ -22,7 +22,7 @@
                         <br><br><br>
                         <div class="add-member-field">
                             <label for="" class="add-member-label">Phone: </label>
-                            <input type="text" class="add-member-input">
+                            <input type="text" class="add-member-input" placeholder="{{ $data['phone'] }}">
                         </div>
                         <br><br><br>
                     <button id="search-button">Update</button>

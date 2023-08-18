@@ -83,7 +83,7 @@
                                     <img src="{{ asset('images/add.png') }}" alt="add" id="add" class="adding">
                                 </div>
                                 <div>
-                                    <p class="ding">App Participants</p>
+                                    <p class="ding">Add Participants</p>
                                 </div>
                             </div>
                             <hr id="hr1">
@@ -178,17 +178,10 @@
         });
         });
 
-        $(document).ready(function() {
-        $(".addingg").click(function() {
-            var content1 = $("#parts-add");
-
-            if (content1.is(":visible")) {
-            content1.slideUp();
-            } else {
-            content1.slideDown();
-            }
-        });
-        });
+        document.getElementById("scroll-mini-butt").addEventListener("click", function() {
+            var parentDiv = document.getElementById("parts-add");
+            parentDiv.style.display = "none";
+            });
     
     </script>
 

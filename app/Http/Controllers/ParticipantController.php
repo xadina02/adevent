@@ -9,11 +9,11 @@ use Illuminate\Support\Collection;
 
 class ParticipantController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $participants = [];
         // $partspantemail = [];
-        $parts_id = EventNature::where('event_id', '=', '1')
+        $parts_id = EventNature::where('event_id', '=', $id)
                 ->orderBy('member_id', 'asc')
                 ->get();
 

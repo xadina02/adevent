@@ -22,9 +22,10 @@ class UserController extends Controller
         return view('members', compact('members'));
     }
 
-    public function show()
+    public function show($id)
     {
-        $data = ['name'=>'Adina Sakwe', 'email'=>'amosongodina@gmail.com'];
+        $data = User::where('id', '=', $id)
+                ->first(['id', 'name', 'email', 'phone']);
         return view('edit_member', compact('data'));
     }
 

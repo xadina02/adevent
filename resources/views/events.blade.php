@@ -29,7 +29,7 @@
                                     <h2 class="top1">{{ strtoupper($event['title']) }}</h2>
 
                                     <div class="top2">
-                                        <a href="{{ route('events/edit') }}" class="top2-sub">Edit</a>
+                                        <a href="{{ route('events/edit', ['id' => $event['id']]) }}" class="top2-sub">Edit</a>
                                         <a href="" class="top2-sub">Delete</a>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
 
                         <div class="ev-second">
                             <div>
-                                <a href="{{ route('events/participants') }}"><button class="ev-button">View Participants</button></a>
+                                <a href="{{ route('events/participants', ['id' => $event['id']]) }}"><button class="ev-button">View Participants</button></a>
                             </div>
                         </div>
                     </div>
