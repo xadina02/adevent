@@ -396,6 +396,8 @@ hr{
     height: 40px;
     flex-shrink: 0;
     border-radius: 10px;
+    /* background: #FFFFFF;
+    color: #770A3E; */
     background: #770A3E;
     color: #FFF;
     font-family: Inknut Antiqua;
@@ -728,7 +730,7 @@ hr{
 
 .participant-house{
     width: 96%;
-    height: 455px;
+    height: 470px;
     flex-shrink: 0;
     border-radius: 10px;
     background: rgba(202, 202, 202, 0.30);
@@ -753,15 +755,34 @@ hr{
 
 #scroll-line{
     margin-top: -5px;
+    width: 98%;
 }
 
 #participant-content1{
     width: 40%;
-    height: 375px;
+    height: 390px;
     flex-shrink: 0;
     background: rgba(202, 202, 202, 0.10);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-left: 30%;
+}
+
+#underline1{
+    width: 120%;
+    height: 10px;
+    margin-left: -381px;
+    margin-top: -14px;
+    border-radius: 10px;
+    background-color: #770A3E;
+}
+
+#underline2{
+    width: 49%;
+    height: 10px;
+    margin-left: 655.5px;
+    margin-top: -14px;
+    border-radius: 10px;
+    background-color: #770A3E;
 }
 
 .up-box{
@@ -784,9 +805,12 @@ hr{
 #participant-content2{
     margin-left: 10px;
     width: 98.5%;
+    height: 405px;
+}
+
+#participant-content2b{
     display: flex;
     justify-content: space-between;
-    background-color: aquamarine;
 }
 
 .finale{
@@ -807,45 +831,115 @@ hr{
     height: 32px;
 }
 
+#parts{
+    height: 300px;
+    overflow: auto;
+}
+
+#parts2{
+    height: 290px;
+    overflow: auto;
+    justify-content: space-between;
+}
+
+.checkbox{
+    background: #CACACA;
+    border-radius: 50%;
+}
+
 .participant-info{
-    width: 500px;
-    height: 330px;
+    width: 470px;
+    height: 60px;
     flex-shrink: 0;
+    border-radius: 5px;
+    background: #CACACA;
     margin-left: 2.5%;
 }
 
 .participant-info-box{
-
+    width: 350px;
+    height: 60px;
+    display: flex;
+    margin-left: 110px;
 }
 
 .participant-info-box2{
-
+    width: 350px;
+    height: 60px;
+    display: flex;
+    margin-left: 100px;
 }
 
 .icon-parti{
-
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
 }
 
 .participant-name{
+    text-align: left;
+    margin-left: 6%;
+    margin-top: -10px;
+}
 
+.part-name{
+    color: #000;
+    font-family: Inknut Antiqua;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.part-email{
+    color: #770A3E;
+    font-family: Inknut Antiqua;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: -20px;
+    
 }
 
 .content2-first{
-    background-color: #700;
-    width: 50%;
+    background: rgba(202, 202, 202, 0.10);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 41%;
+    height: 395px;
+    margin-left: 5%;
+    margin-top: 2px;
 }
 
 #remove-butt{
-
+    width: 120px;
+    height: 33px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #000;
+    color: #FFF;
+    font-family: Inknut Antiqua;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: -4px;
 }
 
 .content2-second{
-    background-color: blueviolet;
-    width: 50%;
+    width: 400px;
+    margin-right: 10%;
+    margin-top: 2px;
 }
 
 #add-butt{
-
+    width: 120px;
+    height: 33px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #770A3E;
+    color: #FFF;
+    font-family: Inknut Antiqua;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
 }
 
 footer{

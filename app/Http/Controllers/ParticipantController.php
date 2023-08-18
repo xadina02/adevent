@@ -11,13 +11,18 @@ class ParticipantController extends Controller
 {
     public function index()
     {
+        $participants = [];
+        // $partspantemail = [];
         $parts_id = EventNature::where('event_id', '=', '1')
-                ->orderBy('member_id', 'desc')
+                ->orderBy('member_id', 'asc')
                 ->get();
 
         foreach($parts_id as $part_id){
-            $participants = User::where('id','=',$part_id['member_id'])
-                    ->get();
+            $participant = User::where('id','=',$part_id['member_id'])
+                    ->first(['id', 'name', 'email', 'avatar']);
+
+            array_push($participants, $participant);
+            // array_push($partspantemail, $participants['email']);
         }
 
         return view('participants', compact('participants'));
