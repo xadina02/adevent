@@ -11,7 +11,7 @@
                         <div class="add-event-top1">
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Event Title: </label>
-                                <input type="text" class="add-member-input" placeholder="{{ $data['title'] }}">
+                                <input type="text" class="add-member-input" placeholder="{{ strtoupper($data['title']) }}">
                             </div>
                             <br>
                             <div class="add-event-field">
