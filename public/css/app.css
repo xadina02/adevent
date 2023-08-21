@@ -948,7 +948,7 @@ hr{
     margin-top: -5px;
     background: #CABCC3;
     width: 400px;
-    height: 300px;
+    height: 310px;
 }
 
 #search1{
@@ -958,7 +958,7 @@ hr{
 
 #search-bar1{
     width: 250px;
-    height: 40px;
+    height: 30px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEFEFE;
@@ -967,7 +967,7 @@ hr{
 
 #search-input1{
     width: 220px;
-    height: 38px;
+    height: 28px;
     flex-shrink: 0;
     border-style: none;
     border-radius: 10px;
@@ -979,7 +979,7 @@ hr{
 
 #search-button1{
     width: 110px;
-    height: 41px;
+    height: 31px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #770A3E;
@@ -997,14 +997,14 @@ width: 90%;
 #scroll-mini{
     text-align: center;
     width: 100%;
-    height: 240px;
+    height: 260px;
     overflow: auto;
 }
 
 #scroll-minii{
     text-align: center;
     width: 100%;
-    height: 185px;
+    height: 190px;
     overflow: auto;
 }
 
@@ -1065,6 +1065,11 @@ width: 90%;
     font-size: 19px;
     font-style: normal;
     font-weight: 500;
+    margin-top: 10px;
+}
+
+#takecare{
+    height: 60px;
 }
 
 footer{

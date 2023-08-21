@@ -57,11 +57,11 @@
                                             <br>
                                         @endforeach
                                     </div><p></p>
-                                    <button id="scroll-mini-butt" class="addingg">Select</button>
+                                    <button id="scroll-mini-butt" class="adding">Select</button>
                                 </form>
                             </div>
                             <div id="parts-addin2" style="display: block;">
-                                <div>
+                                <div id="takecare">
                                     <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p>
                                 </div>
                                 <br>
@@ -109,13 +109,20 @@
             content2.slideUp();
             content1.slideDown();
             }
-        });
+                });
+
+        // $(".addingg").click(function() {
+        //     var content2 = $("#parts-add");
+
+        //     content2.slideUp();
+        //     content1.slideDown();
+        // });
         });
 
-        document.getElementById("scroll-mini-butt").addEventListener("click", function() {
-            var parentDiv = document.getElementById("parts-addin1");
-            parentDiv.style.display = "none";
-            });
+        // document.getElementById("scroll-mini-butt").addEventListener("click", function() {
+        //     var parentDiv = document.getElementById("parts-addin1");
+        //     parentDiv.style.display = "none";
+        //     });
     
     </script>
 
