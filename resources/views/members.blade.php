@@ -1,11 +1,11 @@
 @extends('layouts.member')
 
 @section('content')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <section id="section3">
         <div id="carrier">
             <div id="parent">
-                <form action="">
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
                         <h2 id="form-head2">TEAM MEMBERS LIST</h2>
                         <div id="search">
                             <div id="search-bar">
@@ -34,7 +34,7 @@
                                 <a href="{{ route('members/edit', ['id' => $member['id']]) }}"><button id="update">Update</button></a>
                             </div>
                             <div>
-                                <button class="delete" id="delete1" value="$member['id']">Delete</button>
+                                <button class="delete" id="delete1" value="{{ $member['id'] }}">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -56,35 +56,40 @@
             
         </div>
     </section>
-    <script>
-        function copyButtonValue() {
-            var button2 = document.getElementById("delete-member-yes");
-            var button1 = document.getElementById("delete1");
-            button2.value = button1.value;
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Button click event
-            $('.delete').on('click', function() {
-            // Show the modal and backdrop
-            $('#modalBackdrop').show();
-            });
 
-            // Close modal when the close button is clicked
-            $('#delete-member-no').on('click', function() {
-            $('#modalBackdrop').hide();
-            });
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Button click event
+        var deleteButtons = document.querySelectorAll('.delete');
+        var modalBackdrop = document.getElementById('modalBackdrop');
+        var deleteMemberNoButton = document.getElementById('delete-member-no');
+        var deleteMemberYesButton = document.getElementById('delete-member-yes');
 
-            var buttonValue;
-            $('#delete-member-yes').on('click', function() {
-                var clickedButton = event.target;
-                buttonValue = clickedButton.value;
-                var url = "{{ route('members/delete', ['id' => buttonValue]) }}";
-                $('#modalBackdrop').hide();
-                window.location.href = url;
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var buttonValue = button.value;
+                deleteMemberYesButton.value = buttonValue;
+                modalBackdrop.style.display = 'block';
+                var newElement = document.createElement('span');
+                newElement.textContent = buttonValue;
+                var parentElement = button.parentElement;
+                deleteMemberNoButton.addEventListener('click', function() {
+                    modalBackdrop.style.display = 'none';
+                    // parentElement.appendChild(newElement);
+
+                });
+                deleteMemberYesButton.addEventListener('click', function() {
+                    var url = "{{ route('members/delete', ['id' => ':buttonValue']) }}";
+                    url = url.replace(':buttonValue', buttonValue);
+                //   url = url + buttonValue ;
+                
+                    modalBackdrop.style.display = 'none';
+                    window.location.href = url;
+                });
+            
             });
         });
-    </script>
+    });
+</script>
 
 @endsection

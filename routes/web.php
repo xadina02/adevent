@@ -26,7 +26,7 @@ Route::get('members/registration', [UserController::class, 'form'])->name('membe
 Route::get('members/show/{id}', [UserController::class, 'show'])->name('members/edit');
 Route::post('members/', [UserController::class, 'create'])->name('members/create');
 Route::post('members/update', [UserController::class, 'update'])->name('members/update');
-Route::get('members/delete', [UserController::class, 'remove'])->name('members/delete');
+Route::get('members/remove/{id}', [UserController::class, 'remove'])->name('members/delete');
 Route::post('admin/login/check', [UserController::class, 'validatelogin'])->name('login');
 Route::post('admin/password/change', [UserController::class, 'newpassword'])->name('password.change');
 
@@ -35,7 +35,7 @@ Route::get('events/registration', [EventController::class, 'form'])->name('event
 Route::get('events/show/{id}', [EventController::class, 'show'])->name('events/edit');
 Route::post('events/', [EventController::class, 'create'])->name('events/create');
 Route::post('events/update', [EventController::class, 'update'])->name('events/update');
-Route::post('events/delete', [EventController::class, 'delete'])->name('events/delete');
+Route::post('events/delete/{id}', [EventController::class, 'delete'])->name('events/delete');
 
 Route::get('events/participants/{id}', [ParticipantController::class, 'index'])->name('events/participants');
 Route::post('events/participants/{id}', [ParticipantController::class, 'remove'])->name('events/participants/remove');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
+// $idd = 19;
 class UserController extends Controller
 {
     public function form()
@@ -29,9 +30,28 @@ class UserController extends Controller
         return view('edit_member', compact('data'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        // create member in database
+        $request->validate([
+
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'avatar'=>'required',
+
+        ]);
+        
+        $data = $request->all();
+
+        $member = new User;
+        $member->name = $data['name'];
+        $member->email = $data['email'];
+        $member->phone = $data['phone'];
+        $member->avatar = $data['avatar'];
+        $member->role = "member";
+        $member->save();
+
+        return redirect()->route('members/all');
     }
 
     public function update()
@@ -41,8 +61,9 @@ class UserController extends Controller
     
     public function remove($id)
     {
-        // $member = User::find($id);
-        // $member->delete();
+        $member = User::find($id);
+        $member->delete();
+        // echo $id;
         return redirect()->route('members/all');
     }
 
