@@ -26,7 +26,7 @@ Route::get('members/registration', [UserController::class, 'form'])->name('membe
 Route::get('members/show/{id}', [UserController::class, 'show'])->name('members/edit');
 Route::post('members/', [UserController::class, 'create'])->name('members/create');
 Route::post('members/update', [UserController::class, 'update'])->name('members/update');
-Route::post('members/delete', [UserController::class, 'delete'])->name('members/delete');
+Route::get('members/delete', [UserController::class, 'remove'])->name('members/delete');
 Route::post('admin/login/check', [UserController::class, 'validatelogin'])->name('login');
 Route::post('admin/password/change', [UserController::class, 'newpassword'])->name('password.change');
 

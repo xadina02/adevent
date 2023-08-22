@@ -39,9 +39,11 @@ class UserController extends Controller
         // update member records in database
     }
     
-    public function delete()
+    public function remove($id)
     {
-        // delete member from database
+        // $member = User::find($id);
+        // $member->delete();
+        return redirect()->route('members/all');
     }
 
     public function validatelogin(Request $request)

@@ -90,7 +90,6 @@
                             <div id="parts-add" class="parts-adding" style="display: none;">
                                 <div id="search1">
                                     <div id="search-bar1">
-                                        <img src="" alt="">
                                         <input type="text" placeholder="Name" id="search-input1">
                                     </div>
 

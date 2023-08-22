@@ -1,7 +1,7 @@
 @extends('layouts.member')
 
 @section('content')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <section id="section3">
         <div id="carrier">
             <div id="parent">
@@ -9,10 +9,9 @@
                         <h2 id="form-head2">TEAM MEMBERS LIST</h2>
                         <div id="search">
                             <div id="search-bar">
-                                <img src="" alt="" id="search-image">
                                 <input type="text" placeholder="Name" id="search-input">
                             </div>
-                            <a href=""><button id="search-button">Search</button></a>
+                            <button id="search-button">Search</button>
                         </div>
                 </form>
                 <br><hr>
@@ -35,7 +34,7 @@
                                 <a href="{{ route('members/edit', ['id' => $member['id']]) }}"><button id="update">Update</button></a>
                             </div>
                             <div>
-                                <a href=""><button id="delete">Delete</button></a>
+                                <button class="delete" id="delete1" value="$member['id']">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -43,7 +42,49 @@
                 <br>
                 @endforeach
             </div>
+            <div id="modalBackdrop" style="display: none;">
+                <div id="myModal">
+                    <div id="modal-content">
+                        <h2>Are you sure you want to delete this member?</h2>
+                        <div id="modal-butt-div">
+                            <button class="modal-butt" id="delete-member-yes">YES</button>
+                            <button class="modal-butt" id="delete-member-no">NO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
+    <script>
+        function copyButtonValue() {
+            var button2 = document.getElementById("delete-member-yes");
+            var button1 = document.getElementById("delete1");
+            button2.value = button1.value;
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Button click event
+            $('.delete').on('click', function() {
+            // Show the modal and backdrop
+            $('#modalBackdrop').show();
+            });
+
+            // Close modal when the close button is clicked
+            $('#delete-member-no').on('click', function() {
+            $('#modalBackdrop').hide();
+            });
+
+            var buttonValue;
+            $('#delete-member-yes').on('click', function() {
+                var clickedButton = event.target;
+                buttonValue = clickedButton.value;
+                var url = "{{ route('members/delete', ['id' => buttonValue]) }}";
+                $('#modalBackdrop').hide();
+                window.location.href = url;
+            });
+        });
+    </script>
 
 @endsection

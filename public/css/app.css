@@ -322,6 +322,10 @@ hr{
     border-radius: 10px;
     background: #FEFEFE;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-image: url('../images/search.png');
+    background-repeat: no-repeat;
+    background-size: 4.5% auto;
+    background-position: 8px center;
 }
 
 #search-image{
@@ -335,7 +339,7 @@ hr{
     border-radius: 10px;
     border-style: none;
     background: #FEFEFE;
-    /* margin-right: -10px; */
+    margin-left: 10px;
     outline: none;
     /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
@@ -433,7 +437,7 @@ hr{
     font-weight: 500;
 }
 
-#delete{
+.delete{
     width: 115px;
     height: 40px;
     flex-shrink: 0;
@@ -990,6 +994,10 @@ hr{
     border-radius: 10px;
     background: #FEFEFE;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-image: url('../images/search.png');
+    background-repeat: no-repeat;
+    background-size: 6% auto;
+    background-position: 7px center;
 }
 
 #search-input1{
@@ -1001,7 +1009,7 @@ hr{
     /* background: #FEFEFE; */
     /* margin-right: -10px; */
     outline: none;
-    margin-right: -19px;
+    margin-right: -20px;
 }
 
 #search-button1{
@@ -1097,6 +1105,54 @@ width: 90%;
 
 #takecare{
     height: 60px;
+}
+
+#modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as desired */
+    z-index: 9999; /* Ensure the backdrop is positioned above other elements */
+    display: none; /* Hide the backdrop by default */
+    align-items: center;
+}
+
+#myModal{
+    width: 25%;
+    height: 25%;
+    margin-left: 37.5%;
+    margin-top: 15%;
+    background-color: #CACACA;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#modal-content{
+    /* background-color: #700; */
+}
+
+#modal-butt-div{
+    width: 95%;
+    height: 30px;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-butt{
+    width: 65px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#delete-member-yes{
+    background-color: green;
+}
+
+#delete-member-no{
+    background-color: red;
 }
 
 footer{

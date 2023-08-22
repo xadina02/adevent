@@ -9,10 +9,9 @@
                         <h2 id="form-head2">EVENTS LIST</h2>
                         <div id="search">
                             <div id="search-bar">
-                                <img src="" alt="" id="search-image">
                                 <input type="text" placeholder="Title" id="search-input">
                             </div>
-                            <a href=""><button id="search-button">Search</button></a>
+                            <button id="search-button">Search</button>
                         </div>
                 </form>
                 <br><hr>
