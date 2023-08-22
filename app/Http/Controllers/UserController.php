@@ -66,4 +66,32 @@ class UserController extends Controller
             return redirect()->route('homepage');
         }
     }
+
+    public function newpassword(Request $request)
+    {
+        $request->validate([
+
+            'email'=>'required',
+            'password'=>'required',
+            'cpassword'=>'required',
+
+        ]);
+        
+        $data = $request->all();
+        // dd($data);
+
+        $details = User::where('role', '=', 'admin')
+                ->first(['email']);
+        
+        if(strcmp($data['email'], $details['email']) == 0 && strcmp($data['password'], $data['cpassword']) == 0){
+
+            $admin = User::where('role', '=', 'admin')
+                ->update(['password'=> $data['cpassword']]);
+
+            return redirect()->route('signup');
+        }
+        else{
+            return redirect()->route('forgotpasswd');
+        }
+    }
 }
