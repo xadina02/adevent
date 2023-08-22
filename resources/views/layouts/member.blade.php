@@ -19,10 +19,6 @@
         <div id="nav2">
             <ul class="nav-ul">
                 <li>
-                    <a href="{{ route('homepage') }}" class="nav-list">HOME</a>
-                </li>
-
-                <li>
                     <a href="{{ route('members/all') }}" class="nav-list">MEMBER</a>
                 </li>
 
@@ -36,7 +32,7 @@
             </ul>
         </div>
         <div id="nav3">
-            <button id="nav-button">LOGOUT</button>
+            <a href="{{ route('homepage') }}"><button id="nav-button">LOGOUT</button></a>
         </div>
     </div>
 </nav>

@@ -5,17 +5,22 @@
 
 <section id="section2">
    <div class="log-pass">
-        <form action="">
+        <form action="{{ route('login') }}" method="POST">
+        @csrf
             <h1 id="form-head">SIGN IN</h1>
             <br>
             <div class="log-div">
                 <label for="" class="lab">Email:</label>
-                <input type="text" placeholder="email@example.com" class="form-input" id="email">
+                <div class="form-input" id="email">
+                    <input type="text" placeholder="email@example.com" class="input-local" name="email">
+                </div>
             </div>
             <br><br>
             <div class="log-div">
                 <label for="" class="lab">Password:</label>
-                <input type="password" placeholder="••••••••••••••••••" class="form-input" id="pass">
+                <div class="form-input" id="pass">
+                    <input type="password" placeholder="••••••••••••••••••" class="input-local" name="password">
+                </div>
             </div>
             <br><br>
             <div class="log-div">
@@ -23,9 +28,8 @@
                 <a href="{{ route('homepage') }}" class="form-link">Don't have an account</a>
             </div>
             <br>
-            <div>
-                <a href="{{ route('signup') }}"><button id="sect-button">CONFIRM</button></a>
-            </div>
+            <button type="submit" id="sect-button">CONFIRM</button>
+            
         </form>
    </div><br>
 </section>

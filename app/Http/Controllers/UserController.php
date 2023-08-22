@@ -43,4 +43,27 @@ class UserController extends Controller
     {
         // delete member from database
     }
+
+    public function validatelogin(Request $request)
+    {
+        $request->validate([
+
+            'email'=>'required',
+            'password'=>'required',
+
+        ]);
+        
+        $data = $request->all();
+        // dd($data);
+
+        $details = User::where('role', '=', 'admin')
+                ->first(['email', 'password']);
+
+        if(strcmp($data['email'], $details['email']) == 0 && strcmp($data['password'], $details['password']) == 0){
+            return redirect()->route('members/all');
+        }
+        else{
+            return redirect()->route('homepage');
+        }
+    }
 }

@@ -23,16 +23,16 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('members/all') }}" class="nav-list">MEMBER</a>
+                    <a href="" class="nav-list">ABOUT</a>
                 </li>
 
                 <li>
-                    <a href="" class="nav-list">EVENT</a>
+                    <a href="" class="nav-list">DEVELOPERS</a>
                 </li>
             </ul>
         </div>
         <div id="nav3">
-            <button id="nav-button">LOGOUT</button>
+            <a href="{{ route('signup') }}"><button id="nav-button">LOGIN</button></a>
         </div>
     </div>
 </nav>
