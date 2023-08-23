@@ -32,9 +32,39 @@ class EventController extends Controller
         return view('edit_event', compact('data'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        // create event in database
+        $request->validate([
+
+            'title'=>'required',
+            'description'=>'required',
+            'startdate'=>'required',
+            'starttime'=>'required',
+            'enddate'=>'required',
+            'endtime'=>'required',
+
+        ]);
+        
+        $data = $request->all();
+
+        $event = new User;
+        $event->title = $data['title'];
+        $event->description = $data['description'];
+        // $participants ID = $data['participant'];
+        $event->startdate = $data['startdate'];
+        $event->starttime = $data['starttime'];
+        $event->enddate = $data['enddate'];
+        $event->endtime = $data['endtime'];
+        $event->save();
+        if(!empty($data['participant'])){
+            $eventt = Event::where('title', '=', $data['title'])
+                ->first(['id']);
+        
+            return redirect()->route('events/participants/create',['id' => $eventt['id'], 'participants' => $data['participant']]);
+        }
+        else{
+            return redirect()->route('members/all');
+        }
     }
 
     public function update(Request $request, $id)

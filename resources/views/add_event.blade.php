@@ -7,89 +7,90 @@
         <div class="add-event-main">
             <h2 class="add-event-head">CREATE EVENT</h2>
             <div class="add-event-house">
-                <form action="">
+                <form action="{{ route('events/create') }}" method="POST">
+                    @csrf
                     <div class="add-event-top">
                         <div class="add-event-top1">
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Event Title: </label>
-                                <input type="text" class="add-member-input" placeholder="Type Here...">
+                                <input type="text" class="add-member-input" placeholder="Type Here..." name="title">
                             </div>
                             <br><br>
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Description: </label>
-                                <textarea name="" id="" cols="70" rows="10" class="add-member-input1"></textarea>
+                                <textarea cols="70" rows="10" class="add-member-input1" name="description"></textarea>
                             </div>
                         </div>
                         <div class="add-event-top2">
-                        <div class="add-event-part">
-                            <div class="add-event-part-top">
-                                <div>
-                                    <img src="{{ asset('images/add.png') }}" alt="add" id="add" class="adding">
-                                </div>
-                                <div>
-                                    <p class="ding">Add Participants</p>
-                                </div>
-                            </div>
-                            <hr id="hr1">
-                            <div id="parts-addin1" style="display: none;">
-                                <div id="search1">
-                                    <div id="search-bar1">
-                                        <input type="text" placeholder="Name" id="search-input1">
+                            <div class="add-event-part">
+                                <div class="add-event-part-top">
+                                    <div>
+                                        <img src="{{ asset('images/add.png') }}" alt="add" id="add" class="adding">
                                     </div>
-
-                                    <a href=""><button id="search-button1">Search</button></a>
+                                    <div>
+                                        <p class="ding">Add Participants</p>
+                                    </div>
                                 </div>
-                                <form action="">
-                                    <hr id="hr2">
-                                    <div id="scroll-minii">
-                                        @foreach($members as $member)
-                                            <div class="member-vals3">
-                                                <div class="mv3">
-                                                    <input type="checkbox" value="$member['id']">
-                                                    <img src="data:image/svg+xml;base64,{{ base64_encode($member['avatar']) }}" alt="" id="icon3">
-                                                    <div class="name3">
-                                                        <p class="p13">{{ strtoupper($member['name']) }}</p>
-                                                        <p class="p23">{{ $member['email'] }}</p>
+                                <hr id="hr1">
+                                <div id="parts-addin1" style="display: none;">
+                                    <div id="search1">
+                                        <div id="search-bar1">
+                                            <input type="text" placeholder="Name" id="search-input1">
+                                        </div>
+
+                                        <a href=""><button id="search-button1">Search</button></a>
+                                    </div>
+                                    <form action="">
+                                        <hr id="hr2">
+                                        <div id="scroll-minii">
+                                            @foreach($members as $member)
+                                                <div class="member-vals3">
+                                                    <div class="mv3">
+                                                        <input type="checkbox" value="{{$member['id']}}" name="participant">
+                                                        <img src="data:image/svg+xml;base64,{{ base64_encode($member['avatar']) }}" alt="" id="icon3">
+                                                        <div class="name3">
+                                                            <p class="p13">{{ strtoupper($member['name']) }}</p>
+                                                            <p class="p23">{{ $member['email'] }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <br>
-                                        @endforeach
-                                    </div><p></p>
-                                    <button id="scroll-mini-butt" class="adding">Select</button>
-                                </form>
+                                                <br>
+                                            @endforeach
+                                        </div><p></p>
+                                        <button id="scroll-mini-butt" class="adding">Select</button>
+                                    </form>
+                                </div>
+                                <div id="parts-addin2" style="display: block;">
+                                    <div id="takecare">
+                                        <p></p>
+                                    </div>
+                                    <br>
+                                    <div class="add-event-field1">
+                                        <label for="" class="add-event-label">Start Date: </label>
+                                        <input type="date" class="add-event-input" name="startdate">
+                                    </div>
+                                    <br>
+                                    <div class="add-event-field1">
+                                        <label for="" class="add-event-label">Start Time: </label>
+                                        <input type="time" class="add-event-input" name="starttime">
+                                    </div>
+                                    <br>
+                                    <div class="add-event-field1">
+                                        <label for="" class="add-event-label">End Date: </label>
+                                        <input type="date" class="add-event-input" name="enddate">
+                                    </div>
+                                    <br>
+                                    <div class="add-event-field1">
+                                        <label for="" class="add-event-label">End Time: </label>
+                                        <input type="time" class="add-event-input" name="endtime">
+                                    </div>
+                                </div>
                             </div>
-                            <div id="parts-addin2" style="display: block;">
-                                <div id="takecare">
-                                    <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p>
-                                </div>
-                                <br>
-                                <div class="add-event-field1">
-                                    <label for="" class="add-event-label">Start Date: </label>
-                                    <input type="date" class="add-event-input">
-                                </div>
-                                <br>
-                                <div class="add-event-field1">
-                                    <label for="" class="add-event-label">Start Time: </label>
-                                    <input type="time" class="add-event-input">
-                                </div>
-                                <br>
-                                <div class="add-event-field1">
-                                    <label for="" class="add-event-label">End Date: </label>
-                                    <input type="date" class="add-event-input">
-                                </div>
-                                <br>
-                                <div class="add-event-field1">
-                                    <label for="" class="add-event-label">End Time: </label>
-                                    <input type="time" class="add-event-input">
-                                </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
+                    <br>
+                    <button id="search-button" class="alone">Register</button>
                 </form>
-                <br>
-                <button id="search-button" class="alone">Register</button>
             </div>
         </div>
     </section>

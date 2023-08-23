@@ -37,6 +37,10 @@ class ParticipantController extends Controller
         // return view('participants');
     }
 
+    public function create(){
+        //
+    }
+
     public function remove()
     {
         //
