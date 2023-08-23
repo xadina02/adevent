@@ -28,7 +28,7 @@ class EventController extends Controller
     public function show($id)
     {
         $data = Event::where('id', '=', $id)
-                ->first(['id', 'title', 'description', 'start date', 'start time', 'end date', 'end time']);
+                ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
         return view('edit_event', compact('data'));
     }
 
@@ -37,9 +37,45 @@ class EventController extends Controller
         // create event in database
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        // update event records in database
+        // $request->validate([
+
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'phone'=>'required',
+
+        // ]);
+        
+        $data = $request->all();
+        if (!empty($data['title']) || !empty($data['description']) || !empty($data['startdate']) || !empty($data['starttime']) || !empty($data['enddate']) || !empty($data['endtime'])) {
+            // At least one of the variables is not empty
+            $event = new User;
+            $event = User::find($id);
+            if(!empty($data['title'])){
+                $event->title = $data['title'];
+            }
+            if(!empty($data['description'])){
+                $event->description = $data['description'];
+            }
+            if(!empty($data['startdate'])){
+                $event->startdate = $data['startdate'];
+            }
+            if(!empty($data['starttime'])){
+                $event->starttime = $data['starttime'];
+            }
+            if(!empty($data['enddate'])){
+                $event->enddate = $data['enddate'];
+            }
+            if(!empty($data['endtime'])){
+                $event->endtime = $data['endtime'];
+            }
+            $event->save();
+            return redirect()->route('events/all');
+        }
+        else{
+            return redirect()->route('events/edit', ['id' => $id]);
+        }
     }
     
     public function delete()

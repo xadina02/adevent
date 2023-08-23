@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title', '15');
             $table->text('description', '130')->default('No description to show here..!');
-            $table->date('start date');
-            $table->time('start time');
-            $table->date('end date');
-            $table->time('end time');
+            $table->date('startdate');
+            $table->time('starttime');
+            $table->date('enddate');
+            $table->time('endtime');
             $table->timestamps();
             // $table->timestamps();
         });

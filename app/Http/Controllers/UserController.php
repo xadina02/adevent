@@ -54,9 +54,36 @@ class UserController extends Controller
         return redirect()->route('members/all');
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        // update member records in database
+        // $request->validate([
+
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'phone'=>'required',
+
+        // ]);
+        
+        $data = $request->all();
+        if (!empty($data['name']) || !empty($data['email']) || !empty($data['phone'])) {
+            // At least one of the variables is not empty
+            $member = new User;
+            $member = User::find($id);
+            if(!empty($data['name'])){
+                $member->name = $data['name'];
+            }
+            if(!empty($data['email'])){
+                $member->email = $data['email'];
+            }
+            if(!empty($data['phone'])){
+                $member->phone = $data['phone'];
+            }
+            $member->save();
+            return redirect()->route('members/all');
+        }
+        else{
+            return redirect()->route('members/edit', ['id' => $id]);
+        }
     }
     
     public function remove($id)

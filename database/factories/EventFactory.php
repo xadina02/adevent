@@ -24,10 +24,10 @@ class EventFactory extends Factory
         return [
             'title' => Str::random(5).' '.Str::random(4),
             'description' => fake()->text(130),
-            'start date' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'),
-            'start time' => Carbon::parse(fake()->time('H:i:s'))->format('H:i:s'),
-            'end date' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'), // password
-            'end time' => Carbon::parse(fake()->time('H:i:s'))->format('H:i:s'),
+            'startdate' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'),
+            'starttime' => Carbon::parse(fake()->time('H:i:s'))->format('H:i:s'),
+            'enddate' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'), // password
+            'endtime' => Carbon::parse(fake()->time('H:i:s'))->format('H:i:s'),
         ];
     }
 }
