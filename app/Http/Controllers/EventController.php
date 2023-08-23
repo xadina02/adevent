@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\EventNature;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
@@ -50,7 +51,7 @@ class EventController extends Controller
         $starttime = $request->input('starttime');
         $enddate = $request->input('enddate');
         $endtime = $request->input('endtime');
-        $participants = $request->input('participant');
+        $participants = $request->input('participants');
 
         $event = new Event;
         $event->title = $title;
@@ -67,16 +68,18 @@ class EventController extends Controller
             $eventt = Event::where('title', '=', $title)->first(['id']);
 
             foreach ($participants as $participant) {
-                $redirections[] = redirect()->route('events/participants/create', ['id' => $eventt['id'], 'participant' => $participant]);
+                $eventnature = new EventNature;
+                $eventnature->event_id = $eventt['id'];
+                $eventnature->member_id = $participant;
+                $eventnature->save();
             }
-        } else {
-            redirect()->route('events/all');
+            return redirect()->route('events/all');
         }
 
-        foreach ($redirections as $redirection) {
-            // $redirection->send();
-            return $redirection;
-        }
+        // foreach ($redirections as $redirection) {
+        //     // $redirection->send();
+        //     return $redirection;
+        // }
     }
     // public function create(Request $request)
     // {
