@@ -1108,6 +1108,15 @@ width: 90%;
     font-style: normal;
     font-weight: 500;
     margin-top: 10px;
+    margin-left: 140px;
+    align-items: center;
+    display: flex;
+}
+
+#down{
+    height: 33px;
+    margin-top: 28px;
+    margin-left: 35px;
 }
 
 #takecare{

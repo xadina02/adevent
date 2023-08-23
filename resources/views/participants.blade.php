@@ -95,7 +95,7 @@
 
                                     <a href=""><button id="search-button1">Search</button></a>
                                 </div>
-                                <form action="">
+                                <div>
                                     <hr id="hr2">
                                     <div id="scroll-mini">
                                         @foreach($members as $member)
@@ -112,8 +112,8 @@
                                             <br>
                                         @endforeach
                                     </div>
-                                    <button id="scroll-mini-butt" class="adding">Select</button>
-                                </form>
+                                    <div id="scroll-mini-butt" class="adding"><p id="down">Select</p></div>
+                                </div>
                             </div>
                             <div id="parts-add2" class="parts-adding" style="display: block;">
                                 <div id="takecare">

@@ -46,7 +46,7 @@
                                             @foreach($members as $member)
                                                 <div class="member-vals3">
                                                     <div class="mv3">
-                                                        <input type="checkbox" value="{{$member['id']}}" name="participant">
+                                                        <input type="checkbox" value="{{$member['id']}}" name="participant[]">
                                                         <img src="data:image/svg+xml;base64,{{ base64_encode($member['avatar']) }}" alt="" id="icon3">
                                                         <div class="name3">
                                                             <p class="p13">{{ strtoupper($member['name']) }}</p>
@@ -56,8 +56,8 @@
                                                 </div>
                                                 <br>
                                             @endforeach
-                                        </div><p></p>
-                                        <button id="scroll-mini-butt" class="adding">Select</button>
+                                        </div>
+                                        <div id="scroll-mini-butt" class="adding"><p id="down">Select</p></div>
                                     </div>
                                 </div>
                                 <div id="parts-addin2" style="display: block;">

@@ -20,7 +20,8 @@ class EventController extends Controller
 
     public function display()
     {
-        $events = Event::all();
+        $events = Event::orderBy('id', 'desc')
+                ->get();
 
         return view('events', compact('events'));
     }
@@ -35,37 +36,91 @@ class EventController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-
-            'title'=>'required',
-            'description'=>'required',
-            'startdate'=>'required',
-            'starttime'=>'required',
-            'enddate'=>'required',
-            'endtime'=>'required',
-
+            'title' => 'required',
+            'description' => 'required',
+            'startdate' => 'required',
+            'starttime' => 'required',
+            'enddate' => 'required',
+            'endtime' => 'required',
         ]);
-        
-        $data = $request->all();
+
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $startdate = $request->input('startdate');
+        $starttime = $request->input('starttime');
+        $enddate = $request->input('enddate');
+        $endtime = $request->input('endtime');
+        $participants = $request->input('participant');
 
         $event = new Event;
-        $event->title = $data['title'];
-        $event->description = $data['description'];
-        // $participants ID = $data['participant']; //Look for a way of collecting the values of all selected 'participant'(name) checkboxes and put in an array tht can be accessed using $data['participant']
-        $event->startdate = $data['startdate'];
-        $event->starttime = $data['starttime'];
-        $event->enddate = $data['enddate'];
-        $event->endtime = $data['endtime'];
+        $event->title = $title;
+        $event->description = $description;
+        $event->startdate = $startdate;
+        $event->starttime = $starttime;
+        $event->enddate = $enddate;
+        $event->endtime = $endtime;
         $event->save();
-        if(!empty($data['participant'])){
-            $eventt = Event::where('title', '=', $data['title'])
-                ->first(['id']);
-        
-            return redirect()->route('events/participants/create',['id' => $eventt['id'], 'participants' => $data['participant']]);
+
+        $redirections = [];
+
+        if (!empty($participants)) {
+            $eventt = Event::where('title', '=', $title)->first(['id']);
+
+            foreach ($participants as $participant) {
+                $redirections[] = redirect()->route('events/participants/create', ['id' => $eventt['id'], 'participant' => $participant]);
+            }
+        } else {
+            redirect()->route('events/all');
         }
-        else{
-            return redirect()->route('events/all');
+
+        foreach ($redirections as $redirection) {
+            // $redirection->send();
+            return $redirection;
         }
     }
+    // public function create(Request $request)
+    // {
+    //     $request->validate([
+
+    //         'title'=>'required',
+    //         'description'=>'required',
+    //         'startdate'=>'required',
+    //         'starttime'=>'required',
+    //         'enddate'=>'required',
+    //         'endtime'=>'required',
+
+    //     ]);
+        
+    //     $title = $request->input('title');
+    //     $description = $request->input('description');
+    //     $startdate = $request->input('startdate');
+    //     $starttime = $request->input('starttime');
+    //     $enddate = $request->input('enddate');
+    //     $endtime = $request->input('endtime');
+    //     $participants = $request->input('participant');
+
+    //     $event = new Event;
+    //     $event->title = $title;
+    //     $event->description = $description;
+    //     // $participants ID = $data['participant']; //Look for a way of collecting the values of all selected 'participant'(name) checkboxes and put in an array tht can be accessed using $data['participant']
+    //     $event->startdate = $startdate;
+    //     $event->starttime = $starttime;
+    //     $event->enddate = $enddate;
+    //     $event->endtime = $endtime;
+    //     $event->save();
+    //     if(!empty($participants)){
+    //         $eventt = Event::where('title', '=', $title)
+    //             ->first(['id']);
+            
+    //         foreach ($participants as $participant) {
+    //             $redirections[] = redirect()->route('events/participants/create', ['id' => $eventt['id'], 'participant' => $participant]);
+    //         }
+    //     }
+    //     else{
+    //         return redirect()->route('events/all');
+    //     }
+    //     return $redirections;
+    // }
 
     public function update(Request $request, $id)
     {

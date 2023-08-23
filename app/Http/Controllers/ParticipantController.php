@@ -37,14 +37,13 @@ class ParticipantController extends Controller
         // return view('participants');
     }
 
-    public function create($id, $participants)
+    public function create($id, $participant)
     {
-        foreach($participants as $participant){
-            $event = new EventNature;
-            $event->event_id = $id;
-            $event->member_id = $participant;
-            $event->save();
-        }
+        $eventnature = new EventNature;
+        $eventnature->event_id = $id;
+        $eventnature->member_id = $participant;
+        $eventnature->save();
+    
         return redirect()->route('events/all');
     }
 
