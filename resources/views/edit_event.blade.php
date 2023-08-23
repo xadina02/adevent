@@ -17,7 +17,7 @@
                             <br>
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Description: </label>
-                                <textarea name="" id="" cols="70" rows="10" class="add-member-input1" placeholder="{{ $data['description'] }}" name="description"></textarea>
+                                <textarea cols="70" rows="10" class="add-member-input1" placeholder="{{ $data['description'] }}" name="description"></textarea>
                             </div>
                         </div>
                         <div class="add-event-top2">

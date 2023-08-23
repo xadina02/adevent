@@ -23,7 +23,7 @@ class EventFactory extends Factory
     {
         return [
             'title' => Str::random(5).' '.Str::random(4),
-            'description' => fake()->text(130),
+            'description' => fake()->text(150),
             'startdate' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'),
             'starttime' => Carbon::parse(fake()->time('H:i:s'))->format('H:i:s'),
             'enddate' => Carbon::parse(fake()->dateTimeThisCentury())->format('Y-m-d'), // password

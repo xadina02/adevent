@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title', '15');
-            $table->text('description', '130')->default('No description to show here..!');
+            $table->text('description', '150')->default('No description to show here..!');
             $table->date('startdate');
             $table->time('starttime');
             $table->date('enddate');

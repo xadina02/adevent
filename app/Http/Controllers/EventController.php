@@ -50,8 +50,8 @@ class EventController extends Controller
         $data = $request->all();
         if (!empty($data['title']) || !empty($data['description']) || !empty($data['startdate']) || !empty($data['starttime']) || !empty($data['enddate']) || !empty($data['endtime'])) {
             // At least one of the variables is not empty
-            $event = new User;
-            $event = User::find($id);
+            $event = new Event;
+            $event = Event::find($id);
             if(!empty($data['title'])){
                 $event->title = $data['title'];
             }

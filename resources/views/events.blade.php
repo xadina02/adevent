@@ -38,8 +38,8 @@
                                 </div>
 
                                 <div class="bottom">
-                                    <p>Date: {{ $event['start date'] }}</p>
-                                    <p>Time: {{ $event['start time'] }}</p>
+                                    <p>Date: {{ $event['startdate'] }}</p>
+                                    <p>Time: {{ $event['starttime'] }}</p>
                                 </div>
                            </div>
                         </div>
