@@ -13,6 +13,7 @@ class ParticipantController extends Controller
     {
         $participants = [];
         $partsid = [];
+        $idd = $id;
         // $partspantemail = [];
         $parts_id = EventNature::where('event_id', '=', $id)
                 ->orderBy('member_id', 'asc')
@@ -33,7 +34,7 @@ class ParticipantController extends Controller
                 ->orderBy('id', 'asc')
                 ->get();
 
-        return view('participants', compact('participants', 'members'));
+        return view('participants', compact('participants', 'members', 'idd'));
         // return view('participants');
     }
 
@@ -47,13 +48,33 @@ class ParticipantController extends Controller
         return redirect()->route('events/all');
     }
 
-    public function remove()
+    public function remove(Request $request, $id)
     {
-        //
+        $request->validate([
+            'participants1' => 'required',
+        ]);
+
+        $participants = $request->input('participants1');
+        foreach($participants as $participant){
+            $eventnature = EventNature::where('event_id', '=', $id)->where('member_id', '=', $participant);
+            $eventnature->delete();
+        }
+        return redirect()->route('events/participants', ['id' => $id]);
     }
 
-    public function add()
+    public function add(Request $request, $id)
     {
-        //
+        $request->validate([
+            'participants2' => 'required',
+        ]);
+
+        $participants = $request->input('participants2');
+        foreach($participants as $participant){
+            $eventnature = new EventNature;
+            $eventnature->event_id = $id;
+            $eventnature->member_id = $participant;
+            $eventnature->save();
+        }
+        return redirect()->route('events/participants', ['id' => $id]);
     }
 }

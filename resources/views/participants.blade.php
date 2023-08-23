@@ -52,13 +52,14 @@
                     </div>
                     <div class="down-box">
 
-                        <form action="">
+                        <form action="{{ route('events/participants/remove', ['id' => $idd]) }}" method="POST">
+                            @csrf
                             <hr>
                             <div id="parts2">
                                     @foreach($participants as $particip)
                                         <div class="participant-info">
                                             <div class="participant-info-box2">
-                                                <input type="checkbox" name="participant_id" value="{{ $particip['id'] }}" class="checkbox">
+                                                <input type="checkbox" name="participants1[]" value="{{ $particip['id'] }}" class="checkbox">
                                                 <img src="data:image/svg+xml;base64,{{ base64_encode($particip['avatar']) }}" alt="" class="icon-parti">
                                                 <div class="participant-name">
                                                     <h3 class="part-name">{{ strtoupper($particip['name']) }}</h3>
@@ -76,7 +77,8 @@
                 </div>
 
                 <div class="content2-second">
-                    <form action="">
+                    <form action="{{ route('events/participants/add', ['id' => $idd]) }}" method="POST">
+                        @csrf
                         <div class="add-event-part">
                             <div class="add-event-part-top">
                                 <div>
@@ -101,7 +103,7 @@
                                         @foreach($members as $member)
                                             <div class="member-vals3">
                                                 <div class="mv3">
-                                                    <input type="checkbox" value="$member['id']">
+                                                    <input type="checkbox" value="{{$member['id']}}" name="participants2[]">
                                                     <img src="data:image/svg+xml;base64,{{ base64_encode($member['avatar']) }}" alt="" id="icon3">
                                                     <div class="name3">
                                                         <p class="p13">{{ strtoupper($member['name']) }}</p>
@@ -117,7 +119,7 @@
                             </div>
                             <div id="parts-add2" class="parts-adding" style="display: block;">
                                 <div id="takecare">
-                                    <p>amosongodina@gmail.com | formasitf@gmail.com | ndaleghnoela@gmail.com | stayuptodate237@gmail.com | fongohmartin@gmail.com | billyhans90@gmail.com</p>
+                                    <p></p>
                                 </div>
                                 <br><br><br><br><br>
                                 <button id="add-butt">Add</button>
