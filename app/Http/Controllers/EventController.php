@@ -75,56 +75,8 @@ class EventController extends Controller
             }
             return redirect()->route('events/all');
         }
-
-        // foreach ($redirections as $redirection) {
-        //     // $redirection->send();
-        //     return $redirection;
-        // }
     }
-    // public function create(Request $request)
-    // {
-    //     $request->validate([
-
-    //         'title'=>'required',
-    //         'description'=>'required',
-    //         'startdate'=>'required',
-    //         'starttime'=>'required',
-    //         'enddate'=>'required',
-    //         'endtime'=>'required',
-
-    //     ]);
-        
-    //     $title = $request->input('title');
-    //     $description = $request->input('description');
-    //     $startdate = $request->input('startdate');
-    //     $starttime = $request->input('starttime');
-    //     $enddate = $request->input('enddate');
-    //     $endtime = $request->input('endtime');
-    //     $participants = $request->input('participant');
-
-    //     $event = new Event;
-    //     $event->title = $title;
-    //     $event->description = $description;
-    //     // $participants ID = $data['participant']; //Look for a way of collecting the values of all selected 'participant'(name) checkboxes and put in an array tht can be accessed using $data['participant']
-    //     $event->startdate = $startdate;
-    //     $event->starttime = $starttime;
-    //     $event->enddate = $enddate;
-    //     $event->endtime = $endtime;
-    //     $event->save();
-    //     if(!empty($participants)){
-    //         $eventt = Event::where('title', '=', $title)
-    //             ->first(['id']);
-            
-    //         foreach ($participants as $participant) {
-    //             $redirections[] = redirect()->route('events/participants/create', ['id' => $eventt['id'], 'participant' => $participant]);
-    //         }
-    //     }
-    //     else{
-    //         return redirect()->route('events/all');
-    //     }
-    //     return $redirections;
-    // }
-
+    
     public function update(Request $request, $id)
     {
         // $request->validate([
