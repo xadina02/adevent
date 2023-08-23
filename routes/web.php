@@ -35,7 +35,7 @@ Route::get('events/registration', [EventController::class, 'form'])->name('event
 Route::get('events/show/{id}', [EventController::class, 'show'])->name('events/edit');
 Route::post('events/', [EventController::class, 'create'])->name('events/create');
 Route::post('events/update/{id}', [EventController::class, 'update'])->name('events/update');
-Route::post('events/delete/{id}', [EventController::class, 'delete'])->name('events/delete');
+Route::get('events/delete/{id}', [EventController::class, 'delete'])->name('events/delete');
 
 Route::get('events/participants/{id}', [ParticipantController::class, 'index'])->name('events/participants');
 Route::post('events/participants/{id}', [ParticipantController::class, 'remove'])->name('events/participants/remove');

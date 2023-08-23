@@ -504,8 +504,15 @@ hr{
     margin-top: 13px;
     display: flex;
     justify-content: space-between;
-    width: 110px;
-    
+    width: 110px;   
+}
+
+.top22{
+    margin-top: -0.5px;
+    color: #000;
+    font-style: normal;
+    font-weight: 900;
+    text-decoration: underline;
 }
 
 .top2-sub{

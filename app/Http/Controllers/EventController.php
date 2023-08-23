@@ -78,8 +78,10 @@ class EventController extends Controller
         }
     }
     
-    public function delete()
+    public function delete($id)
     {
-        // delete event from database
+        $event = Event::find($id);
+        $event->delete();
+        return redirect()->route('events/all');
     }
 }

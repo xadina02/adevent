@@ -29,7 +29,7 @@
 
                                     <div class="top2">
                                         <a href="{{ route('events/edit', ['id' => $event['id']]) }}" class="top2-sub">Edit</a>
-                                        <a href="" class="top2-sub">Delete</a>
+                                        <div class="top22" value="{{ $event['id'] }}">Delete</div>
                                     </div>
                                 </div>
 
@@ -54,7 +54,48 @@
                 <br>
                 @endforeach
             </div>
+            <div id="modalBackdrop" style="display: none;">
+                <div id="myModal">
+                    <div id="modal-content">
+                        <h2>Are you sure you want to delete this event?</h2>
+                        <div id="modal-butt-div">
+                            <button class="modal-butt" id="delete-member-yes">YES</button>
+                            <button class="modal-butt" id="delete-member-no">NO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Button click event
+    var deleteButtons = document.querySelectorAll('.top22');
+    var modalBackdrop = document.getElementById('modalBackdrop');
+    var deleteMemberNoButton = document.getElementById('delete-member-no');
+    var deleteMemberYesButton = document.getElementById('delete-member-yes');
+
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+        var buttonValue = button.getAttribute('value');
+        deleteMemberYesButton.value = buttonValue;
+        modalBackdrop.style.display = 'block';
+
+        deleteMemberNoButton.addEventListener('click', function() {
+            modalBackdrop.style.display = 'none';
+        });
+
+        deleteMemberYesButton.addEventListener('click', function() {
+            var url = "{{ route('events/delete', ['id' => ':buttonValue']) }}";
+            url = url.replace(':buttonValue', buttonValue);
+
+            modalBackdrop.style.display = 'none';
+            window.location.href = url;
+        });
+        });
+    });
+    });
+    </script>
 
 @endsection
