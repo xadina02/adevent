@@ -1171,6 +1171,25 @@ width: 90%;
     background-color: red;
 }
 
+#participant_emails{
+    overflow: auto;
+    width: 95%;
+    height: 50px;
+    margin-left: 15px;
+}
+
+#display-avatar{
+    width: 60%;
+    height: 140px;
+    margin-top: 5px;
+    margin-left: 20%;
+}
+
+.avatar-preview {
+    max-width: 100%;
+    height: auto;
+}
+
 footer{
     background-color: #CACACA;
     display: flex;

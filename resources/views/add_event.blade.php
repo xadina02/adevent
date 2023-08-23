@@ -62,7 +62,7 @@
                                 </div>
                                 <div id="parts-addin2" style="display: block;">
                                     <div id="takecare">
-                                        <p></p>
+                                        <p id="participant_emails"></p>
                                     </div>
                                     <br>
                                     <div class="add-event-field1">
@@ -111,19 +111,26 @@
             }
                 });
 
-        // $(".addingg").click(function() {
-        //     var content2 = $("#parts-add");
+        $("#scroll-mini-butt").click(function() {
+        var selectedEmails = [];
 
-        //     content2.slideUp();
-        //     content1.slideDown();
-        // });
+        // Find all the selected checkboxes
+        $("input[name='participants[]']:checked").each(function() {
+            // Get the value of the selected checkbox (participant ID)
+            var participantId = $(this).val();
+
+            // Find the corresponding email using the data attribute
+            var email = $(".member-vals3 input[value='" + participantId + "']").siblings(".name3").find(".p23").text();
+
+            // Add the email to the selectedEmails array
+            selectedEmails.push(email);
+            });
+
+            // Display the selected emails in the participant_emails element
+            $("#participant_emails").text(selectedEmails.join("| "));
         });
+    });
 
-        // document.getElementById("scroll-mini-butt").addEventListener("click", function() {
-        //     var parentDiv = document.getElementById("parts-addin1");
-        //     parentDiv.style.display = "none";
-        //     });
-    
     </script>
 
 @endsection

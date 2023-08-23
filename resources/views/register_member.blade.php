@@ -29,6 +29,7 @@
                             <label for="" class="add-member-label">Avatar: </label>
                             <div id="add-member-image">
                                 <input type="file" id="add-member-input-avatar" name="avatar">
+                                <div id="display-avatar"></div>
                             </div>
                         </div>
                         <br>
@@ -39,5 +40,20 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $("#add-member-input-avatar").change(function() {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var imageSrc = e.target.result;
+                var avatarElement = $("<img>").attr("src", imageSrc).addClass("avatar-preview");
+                $("#display-avatar").empty().append(avatarElement);
+            };
+
+            var selectedFile = this.files[0];
+            reader.readAsDataURL(selectedFile);
+        });
+    </script>
 
 @endsection

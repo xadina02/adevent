@@ -119,7 +119,7 @@
                             </div>
                             <div id="parts-add2" class="parts-adding" style="display: block;">
                                 <div id="takecare">
-                                    <p></p>
+                                    <p id="participant_emails"></p>
                                 </div>
                                 <br><br><br><br><br>
                                 <button id="add-butt">Add</button>
@@ -165,32 +165,38 @@
         }
 
         $(document).ready(function() {
-        $(".adding").click(function() {
-            var content1 = $("#parts-add2");
-            var content2 = $("#parts-add");
+            $(".adding").click(function() {
+                var content1 = $("#parts-add2");
+                var content2 = $("#parts-add");
 
-            if (content1.is(":visible")) {
-            content1.slideUp();
-            content2.slideDown();
-            } else {
-            content2.slideUp();
-            content1.slideDown();
-            }
+                if (content1.is(":visible")) {
+                content1.slideUp();
+                content2.slideDown();
+                } else {
+                content2.slideUp();
+                content1.slideDown();
+                }
+            });
+
+            $("#scroll-mini-butt").click(function() {
+            var selectedEmails = [];
+
+            // Find all the selected checkboxes
+            $("input[name='participants2[]']:checked").each(function() {
+                // Get the value of the selected checkbox (participant ID)
+                var participantId = $(this).val();
+
+                // Find the corresponding email using the data attribute
+                var email = $(".member-vals3 input[value='" + participantId + "']").siblings(".name3").find(".p23").text();
+
+                // Add the email to the selectedEmails array
+                selectedEmails.push(email);
+                });
+
+                // Display the selected emails in the participant_emails element
+                $("#participant_emails").text(selectedEmails.join("| "));
+            });
         });
-
-        // $(".addingg").click(function() {
-        //     var content2 = $("#parts-add");
-
-        //     content2.slideUp();
-        //     content1.slideDown();
-        // });
-        });
-
-        // document.getElementById("scroll-mini-butt").addEventListener("click", function() {
-        //     var parentDiv = document.getElementById("parts-add");
-        //     parentDiv.style.display = "none";
-        //     });
-    
     </script>
 
 @endsection
