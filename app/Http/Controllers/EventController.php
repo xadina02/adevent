@@ -50,7 +50,7 @@ class EventController extends Controller
         $event = new Event;
         $event->title = $data['title'];
         $event->description = $data['description'];
-        // $participants ID = $data['participant'];
+        // $participants ID = $data['participant']; //Look for a way of collecting the values of all selected 'participant'(name) checkboxes and put in an array tht can be accessed using $data['participant']
         $event->startdate = $data['startdate'];
         $event->starttime = $data['starttime'];
         $event->enddate = $data['enddate'];
