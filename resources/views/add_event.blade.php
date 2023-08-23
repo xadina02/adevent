@@ -40,7 +40,7 @@
 
                                         <a href=""><button id="search-button1">Search</button></a>
                                     </div>
-                                    <form action="">
+                                    <div>
                                         <hr id="hr2">
                                         <div id="scroll-minii">
                                             @foreach($members as $member)
@@ -58,7 +58,7 @@
                                             @endforeach
                                         </div><p></p>
                                         <button id="scroll-mini-butt" class="adding">Select</button>
-                                    </form>
+                                    </div>
                                 </div>
                                 <div id="parts-addin2" style="display: block;">
                                     <div id="takecare">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <br>
-                    <button id="search-button" class="alone">Register</button>
+                    <button id="search-button" class="alone" type="submit">Register</button>
                 </form>
             </div>
         </div>

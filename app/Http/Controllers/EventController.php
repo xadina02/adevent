@@ -47,7 +47,7 @@ class EventController extends Controller
         
         $data = $request->all();
 
-        $event = new User;
+        $event = new Event;
         $event->title = $data['title'];
         $event->description = $data['description'];
         // $participants ID = $data['participant'];
@@ -63,7 +63,7 @@ class EventController extends Controller
             return redirect()->route('events/participants/create',['id' => $eventt['id'], 'participants' => $data['participant']]);
         }
         else{
-            return redirect()->route('members/all');
+            return redirect()->route('events/all');
         }
     }
 
