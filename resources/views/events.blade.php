@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+                <br class="event-br">
                 @endforeach
             </div>
             <div id="modalBackdrop" style="display: none;">
@@ -68,34 +68,72 @@
 
         </div>
     </section>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Button click event
-    var deleteButtons = document.querySelectorAll('.top22');
-    var modalBackdrop = document.getElementById('modalBackdrop');
-    var deleteMemberNoButton = document.getElementById('delete-member-no');
-    var deleteMemberYesButton = document.getElementById('delete-member-yes');
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('.top22');
+            var modalBackdrop = document.getElementById('modalBackdrop');
+            var deleteMemberNoButton = document.getElementById('delete-member-no');
+            var deleteMemberYesButton = document.getElementById('delete-member-yes');
+            var searchInput = document.getElementById('search-input');
+            var searchButton = document.getElementById('search-button');
+            var eventsContainer = document.getElementById('members');
+            var searchTerm = '';
 
-    deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-        var buttonValue = button.getAttribute('value');
-        deleteMemberYesButton.value = buttonValue;
-        modalBackdrop.style.display = 'block';
+            searchButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchTerm = searchInput.value.trim().toLowerCase();
 
-        deleteMemberNoButton.addEventListener('click', function() {
-            modalBackdrop.style.display = 'none';
+                var eventVals = document.querySelectorAll('.events-vals');
+                eventVals.forEach(function(event) {
+                    var eventName = event.querySelector('.top1').textContent.toLowerCase();
+                    if (eventName.includes(searchTerm)) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
+                });
+            });
+
+            // Preserve the search keyword in the input field after search
+            searchInput.addEventListener('input', function() {
+                searchTerm = this.value.trim().toLowerCase();
+            });
+
+            // Show the filtered events on page load if a search keyword is present
+            if (searchTerm !== '') {
+                var eventVals = document.querySelectorAll('.events-vals');
+                eventVals.forEach(function(event) {
+                    var eventName = event.querySelector('.top1').textContent.toLowerCase();
+                    if (eventName.includes(searchTerm)) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
+                });
+                // Set the search keyword back in the input field
+                searchInput.value = searchTerm;
+            }
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var buttonValue = button.getAttribute('value');
+                    deleteMemberYesButton.value = buttonValue;
+                    modalBackdrop.style.display = 'block';
+
+                    deleteMemberNoButton.addEventListener('click', function() {
+                        modalBackdrop.style.display = 'none';
+                    });
+
+                    deleteMemberYesButton.addEventListener('click', function() {
+                        var url = "{{ route('events/delete', ['id' => ':buttonValue']) }}";
+                        url = url.replace(':buttonValue', buttonValue);
+
+                        modalBackdrop.style.display = 'none';
+                        window.location.href = url;
+                    });
+                });
+            });
         });
-
-        deleteMemberYesButton.addEventListener('click', function() {
-            var url = "{{ route('events/delete', ['id' => ':buttonValue']) }}";
-            url = url.replace(':buttonValue', buttonValue);
-
-            modalBackdrop.style.display = 'none';
-            window.location.href = url;
-        });
-        });
-    });
-    });
     </script>
 
 @endsection

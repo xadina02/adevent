@@ -1190,6 +1190,14 @@ width: 90%;
     height: auto;
 }
 
+.event-br{
+    background-color: aqua;
+}
+
+.hidden {
+    display: none;
+}
+
 footer{
     background-color: #CACACA;
     display: flex;

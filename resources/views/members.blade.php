@@ -58,38 +58,74 @@
     </section>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Button click event
-        var deleteButtons = document.querySelectorAll('.delete');
-        var modalBackdrop = document.getElementById('modalBackdrop');
-        var deleteMemberNoButton = document.getElementById('delete-member-no');
-        var deleteMemberYesButton = document.getElementById('delete-member-yes');
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('.delete');
+            var modalBackdrop = document.getElementById('modalBackdrop');
+            var deleteMemberNoButton = document.getElementById('delete-member-no');
+            var deleteMemberYesButton = document.getElementById('delete-member-yes');
+            var searchInput = document.getElementById('search-input');
+            var searchButton = document.getElementById('search-button');
+            var membersContainer = document.getElementById('members');
+            var searchTerm = '';
 
-        deleteButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var buttonValue = button.value;
-                deleteMemberYesButton.value = buttonValue;
-                modalBackdrop.style.display = 'block';
-                var newElement = document.createElement('span');
-                newElement.textContent = buttonValue;
-                var parentElement = button.parentElement;
-                deleteMemberNoButton.addEventListener('click', function() {
-                    modalBackdrop.style.display = 'none';
-                    // parentElement.appendChild(newElement);
+            searchButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchTerm = searchInput.value.trim().toLowerCase();
 
+                var memberVals = document.querySelectorAll('.member-vals');
+                memberVals.forEach(function(member) {
+                    var memberName = member.querySelector('.p1').textContent.toLowerCase();
+                    if (memberName.includes(searchTerm)) {
+                        member.style.display = 'block';
+                    } else {
+                        member.style.display = 'none';
+                    }
                 });
-                deleteMemberYesButton.addEventListener('click', function() {
-                    var url = "{{ route('members/delete', ['id' => ':buttonValue']) }}";
-                    url = url.replace(':buttonValue', buttonValue);
-                //   url = url + buttonValue ;
-                
-                    modalBackdrop.style.display = 'none';
-                    window.location.href = url;
+            });
+
+            // Preserve the search keyword in the input field after search
+            searchInput.addEventListener('input', function() {
+                searchTerm = this.value.trim().toLowerCase();
+            });
+
+            // Show the filtered members on page load if a search keyword is present
+            if (searchTerm !== '') {
+                var memberVals = document.querySelectorAll('.member-vals');
+                memberVals.forEach(function(member) {
+                    var memberName = member.querySelector('.p1').textContent.toLowerCase();
+                    if (memberName.includes(searchTerm)) {
+                        member.style.display = 'block';
+                    } else {
+                        member.style.display = 'none';
+                    }
                 });
-            
+
+                // Set the search keyword back in the input field
+                searchInput.value = searchTerm;
+            }
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var buttonValue = button.value;
+                    deleteMemberYesButton.value = buttonValue;
+                    modalBackdrop.style.display = 'block';
+                    var newElement = document.createElement('span');
+                    newElement.textContent = buttonValue;
+                    var parentElement = button.parentElement;
+                    deleteMemberNoButton.addEventListener('click', function() {
+                        modalBackdrop.style.display = 'none';
+                        // parentElement.appendChild(newElement);
+                    });
+                    deleteMemberYesButton.addEventListener('click', function() {
+                        var url = "{{ route('members/delete', ['id' => ':buttonValue']) }}";
+                        url = url.replace(':buttonValue', buttonValue);
+                        //   url = url + buttonValue ;
+                        modalBackdrop.style.display = 'none';
+                        window.location.href = url;
+                    });
+                });
             });
         });
-    });
-</script>
+        </script>
 
 @endsection
