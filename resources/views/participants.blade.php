@@ -111,7 +111,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
                                         @endforeach
                                     </div>
                                     <div id="scroll-mini-butt" class="adding"><p id="down">Select</p></div>
@@ -165,20 +164,32 @@
         }
 
         $(document).ready(function() {
-            $(".adding").click(function() {
-                var content1 = $("#parts-add2");
-                var content2 = $("#parts-add");
+        $(".adding").click(function() {
+            var content1 = $("#parts-add");
+            var content2 = $("#parts-add2");
 
-                if (content1.is(":visible")) {
-                content1.slideUp();
-                content2.slideDown();
+            if (content1.is(":visible")) {
+            content1.slideUp();
+            content2.slideDown();
+            } else {
+            content2.slideUp();
+            content1.slideDown();
+            }
+                });
+
+        $("#search-button1").click(function() {
+            var searchKeyword= $("#search-input1").val().toLowerCase();
+            $(".member-vals3").each(function() {
+                var memberName = $(this).find(".p13").text().toLowerCase();
+                if (memberName.includes(searchKeyword)) {
+                    $(this).show();
                 } else {
-                content2.slideUp();
-                content1.slideDown();
+                    $(this).hide();
                 }
             });
+        });
 
-            $("#scroll-mini-butt").click(function() {
+        $("#scroll-mini-butt").click(function() {
             var selectedEmails = [];
 
             // Find all the selected checkboxes
@@ -191,12 +202,12 @@
 
                 // Add the email to the selectedEmails array
                 selectedEmails.push(email);
-                });
-
-                // Display the selected emails in the participant_emails element
-                $("#participant_emails").text(selectedEmails.join("| "));
             });
+
+            // Display the selected emails in the participant_emails element
+            $("#participant_emails").text(selectedEmails.join(" | "));
         });
+    });
     </script>
 
 @endsection

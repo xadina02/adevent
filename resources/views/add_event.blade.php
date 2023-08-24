@@ -38,7 +38,7 @@
                                             <input type="text" placeholder="Name" id="search-input1">
                                         </div>
 
-                                        <a href=""><button id="search-button1">Search</button></a>
+                                        <button id="search-button1">Search</button>
                                     </div>
                                     <div>
                                         <hr id="hr2">
@@ -54,7 +54,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <br>
                                             @endforeach
                                         </div>
                                         <div id="scroll-mini-butt" class="adding"><p id="down">Select</p></div>
@@ -111,6 +110,56 @@
             }
                 });
 
+        $("#search-button1").click(function() {
+            var searchKeyword= $("#search-input1").val().toLowerCase();
+            $(".member-vals3").each(function() {
+                var memberName = $(this).find(".p13").text().toLowerCase();
+                if (memberName.includes(searchKeyword)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        $("#scroll-mini-butt").click(function() {
+            var selectedEmails = [];
+
+            // Find all the selected checkboxes
+            $("input[name='participants[]']:checked").each(function() {
+                // Get the value of the selected checkbox (participant ID)
+                var participantId = $(this).val();
+
+                // Find the corresponding email using the data attribute
+                var email = $(".member-vals3 input[value='" + participantId + "']").siblings(".name3").find(".p23").text();
+
+                // Add the email to the selectedEmails array
+                selectedEmails.push(email);
+            });
+
+            // Display the selected emails in the participant_emails element
+            $("#participant_emails").text(selectedEmails.join(" | "));
+        });
+    });
+
+    </script>
+
+    <!-- <script>
+
+    $(document).ready(function() {
+        $(".adding").click(function() {
+            var content1 = $("#parts-addin1");
+            var content2 = $("#parts-addin2");
+
+            if (content1.is(":visible")) {
+            content1.slideUp();
+            content2.slideDown();
+            } else {
+            content2.slideUp();
+            content1.slideDown();
+            }
+                });
+
         $("#scroll-mini-butt").click(function() {
         var selectedEmails = [];
 
@@ -131,6 +180,6 @@
         });
     });
 
-    </script>
+    </script> -->
 
 @endsection
