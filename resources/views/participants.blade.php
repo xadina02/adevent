@@ -133,7 +133,7 @@
     </section>
 
     <script>
-        let activeContentId = '';
+        let activeContentId = 'participant-content1';
 
         function toggleContent(heading) {
         const contentId = heading.getAttribute('data-content');
