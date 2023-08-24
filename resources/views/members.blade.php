@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+                <!-- <br> -->
                 @endforeach
             </div>
             <div id="modalBackdrop" style="display: none;">

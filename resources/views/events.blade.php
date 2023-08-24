@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <br class="event-br">
+                <!-- <br class="event-br"> -->
                 @endforeach
             </div>
             <div id="modalBackdrop" style="display: none;">
