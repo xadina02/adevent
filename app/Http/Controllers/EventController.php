@@ -122,6 +122,14 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
+
+        $eventnature = EventNature::pluck('event_id')->all();
+
+        if (in_array($id, $eventnature)) {
+            $eventnature1 = EventNature::where('event_id', '=', $id);
+            $eventnature1->delete();
+        }
+
         return redirect()->route('events/all');
     }
 }

@@ -826,19 +826,19 @@ hr{
 }
 
 .up-box{
-    width: 250px;
+    width: 300px;
     height: 35px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #D9D9D9;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-    margin-left: 25%;
+    margin-left: 22%;
 }
 
 .box-up{
-    width: 200px;
+    width: 300px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-left: 25px;
 }
 
@@ -855,6 +855,7 @@ hr{
 
 .finale{
     margin-top: 5px;
+    margin-left: 5px;
     color: #770A3E;
 }
 

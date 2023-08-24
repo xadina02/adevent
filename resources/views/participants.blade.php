@@ -18,7 +18,7 @@
                 <div class="up-box">
                     <div class="box-up">
                         <img src="{{ asset('images/event.png') }}" alt="" class="parti">
-                        <h2 class="finale">DEMO TIME</h2>
+                        <h2 class="finale">{{ strtoupper($event['title']) }}</h2>
                     </div>
                 </div>
                 <div class="down-box">
@@ -47,12 +47,12 @@
                     <div class="up-box">
                         <div class="box-up">
                             <img src="{{ asset('images/event.png') }}" alt="" class="parti">
-                            <h2 class="finale">DEMO TIME</h2>
+                            <h2 class="finale">{{ strtoupper($event['title']) }}</h2>
                         </div>
                     </div>
                     <div class="down-box">
 
-                        <form action="{{ route('events/participants/remove', ['id' => $idd]) }}" method="POST">
+                        <form action="{{ route('events/participants/remove', ['id' => $event['id']]) }}" method="POST">
                             @csrf
                             <hr>
                             <div id="parts2">
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="content2-second">
-                    <form action="{{ route('events/participants/add', ['id' => $idd]) }}" method="POST">
+                    <form action="{{ route('events/participants/add', ['id' => $event['id']]) }}" method="POST">
                         @csrf
                         <div class="add-event-part">
                             <div class="add-event-part-top">

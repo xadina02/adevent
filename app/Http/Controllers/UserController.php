@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\EventNature;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
@@ -90,7 +91,14 @@ class UserController extends Controller
     {
         $member = User::find($id);
         $member->delete();
-        // echo $id;
+        
+        $eventnature = EventNature::pluck('member_id')->all();
+
+        if (in_array($id, $eventnature)) {
+            $eventnature1 = EventNature::where('member_id', '=', $id);
+            $eventnature1->delete();
+        }
+
         return redirect()->route('members/all');
     }
 

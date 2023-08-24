@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EventNature;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
@@ -13,8 +14,9 @@ class ParticipantController extends Controller
     {
         $participants = [];
         $partsid = [];
-        $idd = $id;
         // $partspantemail = [];
+        $event = Event::where('id','=',$id)
+                    ->first(['id', 'title']);
         $parts_id = EventNature::where('event_id', '=', $id)
                 ->orderBy('member_id', 'asc')
                 ->get();
@@ -34,7 +36,7 @@ class ParticipantController extends Controller
                 ->orderBy('id', 'asc')
                 ->get();
 
-        return view('participants', compact('participants', 'members', 'idd'));
+        return view('participants', compact('participants', 'members', 'event'));
         // return view('participants');
     }
 
