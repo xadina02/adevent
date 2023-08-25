@@ -57,7 +57,8 @@ class UserController extends Controller
         $member->role = "member";
         $member->save();
 
-        return redirect()->route('members/all');
+        // return redirect()->route('members/all');
+        return redirect()->route('mail/send',['name' => $data['name'], 'email' => $data['email']]);
     }
 
     public function update(Request $request, $id)
