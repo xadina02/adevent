@@ -7,7 +7,7 @@
             <h2 id="add-member-head">ADD MEMBER</h2>
 
             <div id="add-member-box">
-                <form action="{{ route('members/create') }}" method="POST">
+                <form action="{{ route('members/create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div id="add-member-input-block">
                         <div class="add-member-field">

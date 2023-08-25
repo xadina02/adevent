@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('password')->nullable();
             $table->string('role');
-            $table->binary('avatar')->default(file_get_contents('https://duwcyermkbwcmhlcshss.supabase.co/storage/v1/object/public/avatars/undraw_female_avatar_efig.svg?t=2023-08-11T09%3A09%3A36.571Z'));
-            $table->timestamp('email_verified_at')->nullable();
+            $table->binary('avatar')->default(file_get_contents('https://www.svgrepo.com/show/335455/profile-default.svg'));
+            $table->timestamp('email_verified_at')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
         });

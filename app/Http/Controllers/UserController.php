@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\EventNature;
 use App\Models\User;
@@ -34,21 +37,23 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-
-            'name'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
-            'avatar'=>'required',
-
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'avatar' => 'required|image', // Add 'image' validation rule for avatar field
         ]);
-        
+
         $data = $request->all();
+        
+        // Retrieve the blob contents of the image file
+        // $avatarData = file_get_contents($data['avatar']->getRealPath());
 
         $member = new User;
         $member->name = $data['name'];
         $member->email = $data['email'];
         $member->phone = $data['phone'];
-        $member->avatar = $data['avatar'];
+        // $member->avatar = $avatarData;
+        $member->avatar = file_get_contents($data['avatar']);
         $member->role = "member";
         $member->save();
 
