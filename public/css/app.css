@@ -63,6 +63,11 @@ nav{
     font-weight: 700;
     line-height: normal;
     text-decoration-line: underline;
+    text-decoration: none;
+}
+
+.nav-list:hover {
+    text-decoration: underline;
 }
 
 #nav3{
@@ -518,6 +523,10 @@ hr{
     text-decoration: underline;
 }
 
+.top22:hover {
+    cursor: pointer;
+}
+
 .top2-sub{
     color: #000;
     font-style: normal;
@@ -792,6 +801,10 @@ hr{
     font-size: 24px;
     font-style: normal;
     font-weight: 930;
+}
+
+.headingf:hover {
+    cursor: pointer;
 }
 
 #scroll-line{
@@ -1122,6 +1135,10 @@ width: 90%;
     height: 33px;
     margin-top: 28px;
     margin-left: 35px;
+}
+
+#down:hover {
+    cursor: pointer;
 }
 
 #takecare{

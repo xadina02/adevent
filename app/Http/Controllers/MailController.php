@@ -11,8 +11,8 @@ class MailController extends Controller
     public function newmember($name, $email)
     {
         $data = [
-            'subject'=>'New Member Alert',
-            'body'=>'Hi '.$name.' welcome to the team!'
+            'subject'=>'New Member Alert!🎉',
+            'body'=>'Hi '.$name.', welcome to the team!'
         ];
 
         Mail::to($email)->send(new NewmemberMail($data));

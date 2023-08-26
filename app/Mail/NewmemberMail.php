@@ -38,7 +38,7 @@ class NewmemberMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.newmember',
+            markdown: 'emails.newmember',
         );
     }
 
