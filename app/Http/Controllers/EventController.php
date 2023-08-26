@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\NewparticipantMail;
 use App\Models\Event;
 use App\Models\EventNature;
 use App\Models\User;
@@ -72,6 +74,16 @@ class EventController extends Controller
                 $eventnature->event_id = $eventt['id'];
                 $eventnature->member_id = $participant;
                 $eventnature->save();
+                //SCHEDULE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
+                
+                // $user = User::where('id', '=', $participant)
+                //     ->first(['name', 'email']);
+                // $data = [
+                //     'subject'=>'INCLUSION🎉',
+                //     'body'=>'Hello '.$user['name'].', you were added to '.'<b>'.$title.'</b>'.' event!'.'<br>'.'Stay tuned!'
+                // ];
+        
+                // Mail::to($user['email'])->send(new NewparticipantMail($data));
             }
             return redirect()->route('events/all');
         }
