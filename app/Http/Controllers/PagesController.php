@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function home()
     {   
-        Session::put('logstate', 'false');
+        Session::forget('logstate');
         return view('homepage');
     }
 

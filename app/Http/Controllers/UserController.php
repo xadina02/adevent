@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function form()
     {
-        if(strcmp(Session::get('logstate'), 'true') == 0){
+        if(Session::has('logstate')){
             return view('register_member');
         }
         else{
@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function display()
     {   
-        if(strcmp(Session::get('logstate'), 'true') == 0){
+        if(Session::has('logstate')){
             $members = User::where('role', '=', 'member')
                     ->orderBy('id', 'desc')
                     ->get();

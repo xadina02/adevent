@@ -15,7 +15,7 @@ class EventController extends Controller
 {
     public function form()
     {
-        if(strcmp(Session::get('logstate'), 'true') == 0){
+        if(Session::has('logstate')){
             $members = User::where('role', '=', 'member')
                     ->orderBy('id', 'desc')
                     ->get();
@@ -29,7 +29,7 @@ class EventController extends Controller
 
     public function display()
     {
-        if(strcmp(Session::get('logstate'), 'true') == 0){
+        if(Session::has('logstate')){
             $events = Event::orderBy('id', 'desc')
                     ->get();
 

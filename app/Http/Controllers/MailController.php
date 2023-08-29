@@ -12,7 +12,7 @@ class MailController extends Controller
     {
         $data = [
             'subject'=>'New Member Alert!🎉',
-            'body'=>'Hi '.$name.', welcome to the Adevent team!'
+            'body'=>'Hi, '.$name.', welcome to the Adevent team!'
         ];
 
         Mail::to($email)->send(new NewmemberMail($data));
