@@ -68,7 +68,7 @@
         $(this).prop("disabled", true);
 
         // Show a loading message
-        $(this).text("Adding...");
+        $(this).text("Registering...");
 
         // Optional: You can also show a loader or spinner if desired
         // For example: $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...');
