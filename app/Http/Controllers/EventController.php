@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\NewparticipantMail;
@@ -46,15 +47,29 @@ class EventController extends Controller
         $data = Event::where('id', '=', $id)
                 ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
 
-        $currentDateTime = Carbon::now();
-        $eventStartDateTime = Carbon::parse($data->startdate . ' ' . $data->starttime);
 
-        if($eventStartDateTime->isSameDay($currentDateTime) && $eventStartDateTime->diffInMinutes($currentDateTime) < 30){
+        $currentDateTime = Carbon::now('UTC');
+        $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
+        $timediff = $time->diffInMinutes($currentDateTime);
+
+        if($time->isSameDay($currentDateTime) && ($timediff < 90)){
+            // dd($timediff, $currentDateTime, $time);
             return view('not_edit_event', compact('data'));
         }
         else{
-            return view('not_edit_event', compact('data'));
+            // dd($timediff, $currentDateTime, $time);
+            return view('edit_event', compact('data'));
         }
+
+        // $currentDateTime = Carbon::now();
+        // $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
+
+        // if($time->isSameDay($currentDateTime) && ($currentDateTime->diffInMinutes($time) < 30)){
+        //     return view('not_edit_event', compact('data'));
+        // }
+        // else{
+        //     return view('edit_event', compact('data'));
+        // }
     }
 
     public function create(Request $request)
