@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\NewparticipantMail;
+use Illuminate\Support\Facades\Session;
 use App\Models\Event;
 use App\Models\EventNature;
 use App\Models\User;
@@ -14,11 +15,16 @@ class EventController extends Controller
 {
     public function form()
     {
-        $members = User::where('role', '=', 'member')
-                ->orderBy('id', 'desc')
-                ->get();
+        if(strcmp(Session::get('logstate'), 'true') == 0){
+            $members = User::where('role', '=', 'member')
+                    ->orderBy('id', 'desc')
+                    ->get();
 
-        return view('add_event', compact('members'));
+            return view('add_event', compact('members'));
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function display()

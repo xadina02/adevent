@@ -16,7 +16,12 @@ class UserController extends Controller
 {
     public function form()
     {
-        return view('register_member');
+        if(strcmp(Session::get('logstate'), 'true') == 0){
+            return view('register_member');
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function display()
