@@ -4,7 +4,7 @@
 
     <section id="section1">
         <div id="add-member-sect">
-            <h2 id="add-member-head">EDIT - {{ strtoupper($data['name']) }}</h2>
+            <h2 id="add-member-head">{{ strtoupper($data['name']) }}</h2>
             
             <div id="add-member-box">
                 <form action="{{ route('members/update', ['id' => $data['id']]) }}" method="POST">

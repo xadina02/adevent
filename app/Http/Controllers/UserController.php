@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\EventNature;
@@ -19,12 +20,17 @@ class UserController extends Controller
     }
 
     public function display()
-    {
-        $members = User::where('role', '=', 'member')
-                ->orderBy('id', 'desc')
-                ->get();
+    {   
+        if(strcmp(Session::get('logstate'), 'true') == 0){
+            $members = User::where('role', '=', 'member')
+                    ->orderBy('id', 'desc')
+                    ->get();
 
-        return view('members', compact('members'));
+            return view('members', compact('members'));
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function show($id)
@@ -124,6 +130,7 @@ class UserController extends Controller
                 ->first(['email', 'password']);
 
         if(strcmp($data['email'], $details['email']) == 0 && strcmp($data['password'], $details['password']) == 0){
+            Session::put('logstate', 'true');
             return redirect()->route('members/all');
         }
         else{

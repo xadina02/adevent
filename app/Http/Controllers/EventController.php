@@ -23,10 +23,15 @@ class EventController extends Controller
 
     public function display()
     {
-        $events = Event::orderBy('id', 'desc')
-                ->get();
+        if(strcmp(Session::get('logstate'), 'true') == 0){
+            $events = Event::orderBy('id', 'desc')
+                    ->get();
 
-        return view('events', compact('events'));
+            return view('events', compact('events'));
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function show($id)
