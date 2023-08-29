@@ -8,6 +8,7 @@ use App\Mail\NewparticipantMail;
 use App\Models\EventNature;
 use App\Models\Event;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class ParticipantController extends Controller
@@ -18,7 +19,7 @@ class ParticipantController extends Controller
         $partsid = [];
         // $partspantemail = [];
         $event = Event::where('id','=',$id)
-                    ->first(['id', 'title']);
+                    ->first(['id', 'title', 'startdate', 'starttime']);
         $parts_id = EventNature::where('event_id', '=', $id)
                 ->orderBy('member_id', 'asc')
                 ->get();
@@ -38,18 +39,23 @@ class ParticipantController extends Controller
                 ->orderBy('id', 'asc')
                 ->get();
 
-        return view('participants', compact('participants', 'members', 'event'));
-        // return view('participants');
-    }
+        // return view('participants', compact('participants', 'members', 'event'));
+        $currentDateTime = Carbon::now('UTC');
+        $time = Carbon::parse($event->startdate . ' ' . $event->starttime);
+        $timediff = $time->diffInMinutes($currentDateTime);
 
-    public function create($id, $participant)
-    {
-        $eventnature = new EventNature;
-        $eventnature->event_id = $id;
-        $eventnature->member_id = $participant;
-        $eventnature->save();
-    
-        return redirect()->route('events/all');
+        if($time->isSameDay($currentDateTime) && ($timediff < 100)){
+            // dd($timediff, $currentDateTime, $time);
+            return view('not_participants', compact('event'));
+        }
+        elseif($time->lessThan($currentDateTime)){
+            return view('not_participants', compact('event'));
+        }
+        else{
+            // dd($timediff, $currentDateTime, $time);
+            return view('participants', compact('participants', 'members', 'event'));
+        }
+        // return view('participants');
     }
 
     public function remove(Request $request, $id)

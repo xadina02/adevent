@@ -6,8 +6,9 @@
         <div class="add-event-main">
             <h2 class="add-event-head">{{ strtoupper($data['title']) }}</h2>
             <div class="add-event-house">
-                <br><br><br>
-                <h1 id="no-edit">SORRY!! YOU CANNOT EDIT THIS EVENT BECAUSE IT IS DUE TO BEGIN SOON.</h1>
+                <br><br>
+                <h1 id="no-edit">SORRY!! YOU CAN NO LONGER EDIT THIS EVENT.</h1>
+                <img src="{{ asset('images/error.svg') }}" alt="error" id="edit-error">
             </div>
         </div>
     </section>

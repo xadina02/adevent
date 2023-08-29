@@ -39,7 +39,6 @@ Route::post('events/update/{id}', [EventController::class, 'update'])->name('eve
 Route::get('events/delete/{id}', [EventController::class, 'delete'])->name('events/delete');
 
 Route::get('events/participants/{id}', [ParticipantController::class, 'index'])->name('events/participants');
-Route::get('events/participants/{id}/{participant}', [ParticipantController::class, 'create'])->name('events/participants/create');
 Route::post('events/participants/remove/{id}', [ParticipantController::class, 'remove'])->name('events/participants/remove');
 Route::post('events/participants/add/{id}', [ParticipantController::class, 'add'])->name('events/participants/add');
 

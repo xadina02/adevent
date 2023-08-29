@@ -52,8 +52,11 @@ class EventController extends Controller
         $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
         $timediff = $time->diffInMinutes($currentDateTime);
 
-        if($time->isSameDay($currentDateTime) && ($timediff < 90)){
+        if($time->isSameDay($currentDateTime) && ($timediff < 100)){
             // dd($timediff, $currentDateTime, $time);
+            return view('not_edit_event', compact('data'));
+        }
+        elseif($time->lessThan($currentDateTime)){
             return view('not_edit_event', compact('data'));
         }
         else{
