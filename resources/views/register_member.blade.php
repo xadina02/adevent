@@ -54,6 +54,31 @@
             var selectedFile = this.files[0];
             reader.readAsDataURL(selectedFile);
         });
+
+        $(document).ready(function() {
+        var addFormSubmitted = false;
+
+        $("form").submit(function() {
+        // Set the flag to indicate form submission
+        addFormSubmitted = true;
+        });
+
+        $("#search-button").click(function() {
+        // Disable the button
+        $(this).prop("disabled", true);
+
+        // Show a loading message
+        $(this).text("Adding...");
+
+        // Optional: You can also show a loader or spinner if desired
+        // For example: $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...');
+
+        // Submit the form if it hasn't been submitted already
+        if (!addFormSubmitted) {
+            $(this).closest("form").submit();
+        }
+        });
+        });
     </script>
 
 @endsection

@@ -360,7 +360,6 @@ hr{
     font-size: 21px;
     font-style: normal;
     font-weight: 800;
-    line-height: 40px; /* 125% */
 }
 
 #members{
@@ -1218,6 +1217,16 @@ width: 90%;
 
 .hidden {
     display: none;
+}
+
+#errr{
+    display: flex;
+    justify-content: center;
+}
+
+.err{
+    color: red;
+    list-style-type: none;
 }
 
 footer{

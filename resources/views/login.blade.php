@@ -27,6 +27,11 @@
                 <a href="{{ route('forgotpasswd') }}" class="form-link">Forgot Password</a>
                 <a href="{{ route('homepage') }}" class="form-link">Don't have an account</a>
             </div>
+            <div id="errr">
+                @foreach ($errors->all() as $error)
+                    <li class="err">{{ $error }}</li>
+                @endforeach
+            </div>
             <br>
             <button type="submit" id="sect-button">CONFIRM</button>
             

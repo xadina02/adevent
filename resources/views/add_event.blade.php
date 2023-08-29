@@ -142,44 +142,32 @@
         });
     });
 
-    </script>
-
-    <!-- <script>
 
     $(document).ready(function() {
-        $(".adding").click(function() {
-            var content1 = $("#parts-addin1");
-            var content2 = $("#parts-addin2");
+        var addFormSubmitted = false;
 
-            if (content1.is(":visible")) {
-            content1.slideUp();
-            content2.slideDown();
-            } else {
-            content2.slideUp();
-            content1.slideDown();
-            }
-                });
+        $("form").submit(function() {
+        // Set the flag to indicate form submission
+        addFormSubmitted = true;
+        });
 
-        $("#scroll-mini-butt").click(function() {
-        var selectedEmails = [];
+        $("#search-button").click(function() {
+        // Disable the button
+        $(this).prop("disabled", true);
 
-        // Find all the selected checkboxes
-        $("input[name='participants[]']:checked").each(function() {
-            // Get the value of the selected checkbox (participant ID)
-            var participantId = $(this).val();
+        // Show a loading message
+        $(this).text("Registering...");
 
-            // Find the corresponding email using the data attribute
-            var email = $(".member-vals3 input[value='" + participantId + "']").siblings(".name3").find(".p23").text();
+        // Optional: You can also show a loader or spinner if desired
+        // For example: $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...');
 
-            // Add the email to the selectedEmails array
-            selectedEmails.push(email);
-            });
-
-            // Display the selected emails in the participant_emails element
-            $("#participant_emails").text(selectedEmails.join("| "));
+        // Submit the form if it hasn't been submitted already
+        if (!addFormSubmitted) {
+            $(this).closest("form").submit();
+        }
         });
     });
 
-    </script> -->
+    </script>
 
 @endsection

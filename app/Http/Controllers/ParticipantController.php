@@ -80,16 +80,16 @@ class ParticipantController extends Controller
             $eventnature->save();
             //SCHEDULE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
 
-            // $user = User::where('id', '=', $participant)
-            //     ->first(['name', 'email']);
-            // $event = Event::where('id', '=', $id)
-            //     ->first(['title']);
-            // $data = [
-            //     'subject'=>'Great Work🎉!',
-            //     'body'=>'Hello '.$user['name'].', you were added to ``'.$event['title'].'`` event! Stay tuned!'
-            // ];
+            $user = User::where('id', '=', $participant)
+                ->first(['name', 'email']);
+            $event = Event::where('id', '=', $id)
+                ->first(['title']);
+            $data = [
+                'subject'=>'Great Work 🎉!',
+                'body'=>'Hello, '.$user['name'].', you were added to "'.$event['title'].'" event! Stay tuned!'
+            ];
         
-            // Mail::to($user['email'])->send(new NewparticipantMail($data));
+            Mail::to($user['email'])->send(new NewparticipantMail($data));
         }
         return redirect()->route('events/participants', ['id' => $id]);
     }
