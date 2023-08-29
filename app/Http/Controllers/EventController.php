@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Event;
 use App\Models\EventNature;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class EventController extends Controller
@@ -44,7 +45,16 @@ class EventController extends Controller
     {
         $data = Event::where('id', '=', $id)
                 ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
-        return view('edit_event', compact('data'));
+
+        $currentDateTime = Carbon::now();
+        $eventStartDateTime = Carbon::parse($data->startdate . ' ' . $data->starttime);
+
+        if($eventStartDateTime->isSameDay($currentDateTime) && $eventStartDateTime->diffInMinutes($currentDateTime) < 30){
+            return view('not_edit_event', compact('data'));
+        }
+        else{
+            return view('not_edit_event', compact('data'));
+        }
     }
 
     public function create(Request $request)
@@ -85,7 +95,7 @@ class EventController extends Controller
                 $eventnature->event_id = $eventt['id'];
                 $eventnature->member_id = $participant;
                 $eventnature->save();
-                //SCHEDULE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
+                //QUEUE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
                 
                 $user = User::where('id', '=', $participant)
                     ->first(['name', 'email']);
@@ -98,6 +108,10 @@ class EventController extends Controller
             }
             return redirect()->route('events/all');
         }
+        else{
+            return redirect()->route('events/all');
+        }
+        //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
     }
     
     public function update(Request $request, $id)

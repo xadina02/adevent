@@ -1229,6 +1229,10 @@ width: 90%;
     list-style-type: none;
 }
 
+#no-edit{
+    color: red;
+}
+
 footer{
     background-color: #CACACA;
     display: flex;

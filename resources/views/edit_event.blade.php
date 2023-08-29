@@ -4,7 +4,7 @@
 
     <section id="section1">
         <div class="add-event-main">
-            <h2 class="add-event-head">EDIT - {{ strtoupper($data['title']) }}</h2>
+            <h2 class="add-event-head">{{ strtoupper($data['title']) }}</h2>
             <div class="add-event-house">
                 <form action="{{ route('events/update', ['id' => $data['id']]) }}" method="POST">
                     @csrf

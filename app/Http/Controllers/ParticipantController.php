@@ -78,7 +78,7 @@ class ParticipantController extends Controller
             $eventnature->event_id = $id;
             $eventnature->member_id = $participant;
             $eventnature->save();
-            //SCHEDULE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
+            //QUEUE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
 
             $user = User::where('id', '=', $participant)
                 ->first(['name', 'email']);
