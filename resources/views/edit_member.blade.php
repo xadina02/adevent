@@ -13,17 +13,17 @@
                         <br><br>
                         <div class="add-member-field">
                             <label for="" class="add-member-label">Name: </label>
-                            <input type="text" class="add-member-input" placeholder="{{ $data['name'] }}" name="name">
+                            <input type="text" class="add-member-input" value="{{ $data['name'] }}" name="name">
                         </div>
                         <br><br><br>
                         <div class="add-member-field">
                             <label for="" class="add-member-label">Email: </label>
-                            <input type="text" class="add-member-input" placeholder="{{ $data['email'] }}" name="email">
+                            <input type="text" class="add-member-input" value="{{ $data['email'] }}" name="email">
                         </div>
                         <br><br><br>
                         <div class="add-member-field">
                             <label for="" class="add-member-label">Phone: </label>
-                            <input type="text" class="add-member-input" placeholder="{{ $data['phone'] }}" name="phone">
+                            <input type="text" class="add-member-input" value="{{ $data['phone'] }}" name="phone">
                         </div>
                         <br><br><br>
                     <button id="search-button" type="submit">Update</button>

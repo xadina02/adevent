@@ -12,34 +12,34 @@
                         <div class="add-event-top1">
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Event Title: </label>
-                                <input type="text" class="add-member-input" placeholder="{{ strtoupper($data['title']) }}" name="title">
+                                <input type="text" class="add-member-input" value="{{ strtoupper($data['title']) }}" name="title">
                             </div>
                             <br>
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Description: </label>
-                                <textarea cols="70" rows="10" class="add-member-input1" placeholder="{{ $data['description'] }}" name="description"></textarea>
+                                <textarea cols="70" rows="10" class="add-member-input1" name="description">{{ $data['description'] }}</textarea>
                             </div>
                         </div>
                         <div class="add-event-top2">
                             
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">Start Date: </label>
-                                <input type="date" class="add-event-input" placeholder="{{ $data['start date'] }}" name="startdate">
+                                <input type="date" class="add-event-input" value="{{ $data['start date'] }}" name="startdate">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">Start Time: </label>
-                                <input type="time" class="add-event-input" placeholder="{{ $data['start time'] }}" name="starttime">
+                                <input type="time" class="add-event-input" value="{{ $data['start time'] }}" name="starttime">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">End Date: </label>
-                                <input type="date" class="add-event-input" placeholder="{{ $data['end date'] }}" name="enddate">
+                                <input type="date" class="add-event-input" value="{{ $data['end date'] }}" name="enddate">
                             </div>
                             <br><br><br>
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">End Time: </label>
-                                <input type="time" class="add-event-input" placeholder="{{ $data['end time'] }}" name="endtime">
+                                <input type="time" class="add-event-input" value="{{ $data['end time'] }}" name="endtime">
                             </div>
                         </div>
                     </div>
