@@ -46,7 +46,7 @@
 
                         <div class="ev-second">
                             <div>
-                                <a href="{{ route('events/participants', ['id' => $event['id']]) }}"><button class="ev-button">View Participants</button></a>
+                                <a href="{{ route('events/participants', ['id' => $event['id']]) }}"><button class="ev-button">Participants</button></a>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
     <section id="section3">
         <div class="participant-house">
             <div class="participant-title">
-                <h1 class="headingf" data-content="participant-content1" onclick="toggleContent(this)">VIEW PARTICIPANTS</h1>
+                <h1 class="headingf" data-content="participant-content1" onclick="toggleContent(this)">ALL PARTICIPANTS</h1>
 
                 <h1 class="headingf" data-content="participant-content2" onclick="toggleContent(this)">MANAGE PARTICIPANTS</h1>
             </div>

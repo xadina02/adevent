@@ -19,11 +19,11 @@
         <div id="nav2">
             <ul class="nav-ul">
                 <li>
-                    <a href="{{ route('members/all') }}" class="nav-list">MEMBER</a>
+                    <a href="{{ route('members/all') }}" class="nav-list">MEMBERS</a>
                 </li>
 
                 <li>
-                    <a href="{{ route('events/all') }}" class="nav-list">EVENT</a>
+                    <a href="{{ route('events/all') }}" class="nav-list">EVENTS</a>
                 </li>
 
                 <li>
