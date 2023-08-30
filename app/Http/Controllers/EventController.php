@@ -64,15 +64,6 @@ class EventController extends Controller
             return view('edit_event', compact('data'));
         }
 
-        // $currentDateTime = Carbon::now();
-        // $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
-
-        // if($time->isSameDay($currentDateTime) && ($currentDateTime->diffInMinutes($time) < 30)){
-        //     return view('not_edit_event', compact('data'));
-        // }
-        // else{
-        //     return view('edit_event', compact('data'));
-        // }
     }
 
     public function create(Request $request)
@@ -127,9 +118,11 @@ class EventController extends Controller
             return redirect()->route('events/all');
         }
         else{
+
+            //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
+            //
             return redirect()->route('events/all');
         }
-        //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
     }
     
     public function update(Request $request, $id)

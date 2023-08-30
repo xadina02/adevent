@@ -46,10 +46,10 @@ class ParticipantController extends Controller
 
         if($time->isSameDay($currentDateTime) && ($timediff < 100)){
             // dd($timediff, $currentDateTime, $time);
-            return view('not_participants', compact('event'));
+            return view('not_participants');
         }
         elseif($time->lessThan($currentDateTime)){
-            return view('not_participants', compact('event'));
+            return view('not_participants');
         }
         else{
             // dd($timediff, $currentDateTime, $time);
