@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\NewparticipantMail;
+use App\Mail\PreReminderMail;
+use App\Mail\ReminderMail;
 use Illuminate\Support\Facades\Session;
 use App\Models\Event;
 use App\Models\EventNature;
@@ -114,15 +116,44 @@ class EventController extends Controller
                 ];
         
                 Mail::to($user['email'])->send(new NewparticipantMail($data));
+
+                //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
+                //
+                $startTime = Carbon::parse($startdate.' '.$starttime);
+                $emailTime = $startTime->subMinutes(30);
+                $this->schedulePreEmail($participant, $title, $emailTime);
+
+                // Schedule email at the start time
+                $this->scheduleEmail($participant, $title, $startTime);
             }
             return redirect()->route('events/all');
         }
         else{
 
-            //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
-            //
             return redirect()->route('events/all');
         }
+    }
+
+    public function schedulePreEmail($participant, $title, $emailTime)
+    {
+        $user = User::where('id', '=', $participant)->first(['name', 'email']);
+        $data = [
+            'subject' => '🚨Reminder',
+            'body' => $user['name'].', get ready, it`s almost time for "'.$title.'" event to begin!'
+        ];
+    
+        Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
+    }
+
+    public function scheduleEmail($participant, $title, $emailTime)
+    {
+        $user = User::where('id', '=', $participant)->first(['name', 'email']);
+        $data = [
+            'subject' => '⚠️Meeting Time⚠️',
+            'body' => $user['name'].', it`s time, hope you are set for "'.$title.'" event!'
+        ];
+    
+        Mail::to($user['email'])->later($emailTime, new ReminderMail($data));
     }
     
     public function update(Request $request, $id)
