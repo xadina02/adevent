@@ -631,7 +631,7 @@ hr{
 
 #add-member-image{
     width: 358px;
-    height: 170px;
+    height: 140px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEFEFE;
@@ -722,7 +722,7 @@ hr{
 
 .add-member-input1{
     width: 337px;
-    height: 230px;
+    height: 210px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEFEFE;
@@ -734,7 +734,7 @@ hr{
 
 .add-event-input{
     width: 250px;
-    height: 32px;
+    height: 27px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEFEFE;

@@ -73,10 +73,13 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'startdate' => 'required',
+            'startdate' => 'required|date',
             'starttime' => 'required',
-            'enddate' => 'required',
-            'endtime' => 'required',
+            'enddate' => 'required|date|after_or_equal:startdate',
+            'endtime' => 'required|after:starttime',
+        ], [
+            'enddate.after_or_equal' => 'The end date must be equal to or after the start date! ',
+            'endtime.after' => 'The end time must be greater than the start time!',
         ]);
 
         $title = $request->input('title');
@@ -119,12 +122,12 @@ class EventController extends Controller
 
                 //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
                 //
-                $startTime = Carbon::parse($startdate.' '.$starttime);
-                $emailTime = $startTime->subMinutes(30);
-                $this->schedulePreEmail($participant, $title, $emailTime);
+                // $startTime = Carbon::parse($startdate.' '.$starttime);
+                // $emailTime = $startTime->subMinutes(30);
+                // $this->schedulePreEmail($participant, $title, $emailTime);
 
-                // Schedule email at the start time
-                $this->scheduleEmail($participant, $title, $startTime);
+                // // Schedule email at the start time
+                // $this->scheduleEmail($participant, $title, $startTime);
             }
             return redirect()->route('events/all');
         }
@@ -134,27 +137,27 @@ class EventController extends Controller
         }
     }
 
-    public function schedulePreEmail($participant, $title, $emailTime)
-    {
-        $user = User::where('id', '=', $participant)->first(['name', 'email']);
-        $data = [
-            'subject' => '🚨Reminder',
-            'body' => $user['name'].', get ready, it`s almost time for "'.$title.'" event to begin!'
-        ];
+    // public function schedulePreEmail($participant, $title, $emailTime)
+    // {
+    //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
+    //     $data = [
+    //         'subject' => '🚨Reminder',
+    //         'body' => $user['name'].', get ready, it`s almost time for "'.$title.'" event to begin!'
+    //     ];
     
-        Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
-    }
+    //     Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
+    // }
 
-    public function scheduleEmail($participant, $title, $emailTime)
-    {
-        $user = User::where('id', '=', $participant)->first(['name', 'email']);
-        $data = [
-            'subject' => '⚠️Meeting Time⚠️',
-            'body' => $user['name'].', it`s time, hope you are set for "'.$title.'" event!'
-        ];
+    // public function scheduleEmail($participant, $title, $emailTime)
+    // {
+    //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
+    //     $data = [
+    //         'subject' => '⚠️Meeting Time⚠️',
+    //         'body' => $user['name'].', it`s time, hope you are set for "'.$title.'" event!'
+    //     ];
     
-        Mail::to($user['email'])->later($emailTime, new ReminderMail($data));
-    }
+    //     Mail::to($user['email'])->later($emailTime, new ReminderMail($data));
+    // }
     
     public function update(Request $request, $id)
     {

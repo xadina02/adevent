@@ -33,6 +33,11 @@
                             </div>
                         </div>
                         <br>
+                        <div id="errr">
+                            @foreach ($errors->all() as $error)
+                                <li class="err">{{ $error }}</li>
+                            @endforeach
+                        </div>
                     </div>
 
                     <button id="search-button" type="submit">Register</button>
