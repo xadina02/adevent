@@ -117,6 +117,7 @@ class EventController extends Controller
             return redirect()->route('mail/send/add/participant',['participants' => implode(',', $participants), 'id' => $eventt['id']]);
         }
         else{
+            // replace return statement below with redirect link to schedule prereminder and reminder mailer
             return redirect()->route('events/all');
         }
     }

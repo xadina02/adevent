@@ -66,6 +66,7 @@ class MailController extends Controller
         
             Mail::to($user['email'])->send(new NewparticipantMail($data));
         }
+        // replace return statement below with redirect link to schedule prereminder and reminder mailer
         return redirect()->route('events/all');
     }
 }

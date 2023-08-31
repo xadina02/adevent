@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
                 $this->scheduleEmail($participant, $event->title, $startTime);
             }
         })->dailyAt('00:00');
+        // after scheduling mailers, redirect to route('events/all');
     }
 
     /**
