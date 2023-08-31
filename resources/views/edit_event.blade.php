@@ -5,10 +5,10 @@
     <section id="section1">
         <div class="add-event-main">
             <h2 class="add-event-head">{{ strtoupper($data['title']) }}</h2>
-            <div class="add-event-house">
+            <div class="add-event-housee">
                 <form action="{{ route('events/update', ['id' => $data['id']]) }}" method="POST">
                     @csrf
-                    <div class="add-event-top">
+                    <div class="add-event-topp">
                         <div class="add-event-top1">
                             <div class="add-event-field">
                                 <label for="" class="add-member-label">Event Title: </label>
@@ -20,7 +20,7 @@
                                 <textarea cols="70" rows="10" class="add-member-input1" name="description">{{ $data['description'] }}</textarea>
                             </div>
                         </div>
-                        <div class="add-event-top2">
+                        <!-- <div class="add-event-top2">
                             
                             <div class="add-event-field1">
                                 <label for="" class="add-event-label">Start Date: </label>
@@ -41,7 +41,7 @@
                                 <label for="" class="add-event-label">End Time: </label>
                                 <input type="time" class="add-event-input" value="{{ $data['end time'] }}" name="endtime">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <br><br>
                     <button id="search-button" type="submit">Update</button>

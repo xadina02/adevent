@@ -677,9 +677,27 @@ hr{
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
+.add-event-housee{
+    border-radius: 10px;
+    background: rgba(202, 202, 202, 0.30);
+    width: 50%;
+    height: 390px;
+    padding: 20px;
+    margin-left: 24%;
+    margin-top: -10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
 .add-event-top{
     display: flex;
     justify-content: space-between;
+    width: 89%;
+    margin-left: 5.5%;
+}
+
+.add-event-topp{
+    display: flex;
+    justify-content: center;
     width: 89%;
     margin-left: 5.5%;
 }
@@ -1208,6 +1226,7 @@ width: 90%;
     width: 95px;
     height: 30px;
     border-radius: 5px;
+    color: #FEFEFE;
 }
 
 #delete-member-yes{
@@ -1262,6 +1281,10 @@ width: 90%;
 #edit-error{
     width: 250px;
     height: 250px;
+}
+
+#no-events-text{
+    color: #770A3E;
 }
 
 footer{

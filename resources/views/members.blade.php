@@ -67,21 +67,49 @@
             var searchButton = document.getElementById('search-button');
             var membersContainer = document.getElementById('members');
             var searchTerm = '';
+            var noMembersText = document.createElement('h1');
+            noMembersText.id = 'no-events-text';
+            noMembersText.textContent = 'No members match your search!';
+
 
             searchButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 searchTerm = searchInput.value.trim().toLowerCase();
 
                 var memberVals = document.querySelectorAll('.member-vals');
+                var hasMatchingMembers = false;
+
                 memberVals.forEach(function(member) {
                     var memberName = member.querySelector('.p1').textContent.toLowerCase();
                     if (memberName.includes(searchTerm)) {
                         member.style.display = 'block';
+                        hasMatchingMembers = true;
                     } else {
                         member.style.display = 'none';
                     }
                 });
+
+                if (!hasMatchingMembers) {
+                    membersContainer.appendChild(noMembersText);
+                } else {
+                    membersContainer.removeChild(noMembersText);
+                }
             });
+
+            // searchButton.addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     searchTerm = searchInput.value.trim().toLowerCase();
+
+            //     var memberVals = document.querySelectorAll('.member-vals');
+            //     memberVals.forEach(function(member) {
+            //         var memberName = member.querySelector('.p1').textContent.toLowerCase();
+            //         if (memberName.includes(searchTerm)) {
+            //             member.style.display = 'block';
+            //         } else {
+            //             member.style.display = 'none';
+            //         }
+            //     });
+            // });
 
             // Preserve the search keyword in the input field after search
             searchInput.addEventListener('input', function() {

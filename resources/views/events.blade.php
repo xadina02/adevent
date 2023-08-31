@@ -78,21 +78,49 @@
             var searchButton = document.getElementById('search-button');
             var eventsContainer = document.getElementById('members');
             var searchTerm = '';
+            var noEventsText = document.createElement('h1');
+            noEventsText.id = 'no-events-text';
+            noEventsText.textContent = 'No events match your search!';
+
 
             searchButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 searchTerm = searchInput.value.trim().toLowerCase();
 
                 var eventVals = document.querySelectorAll('.events-vals');
+                var hasMatchingEvents = false;
+
                 eventVals.forEach(function(event) {
                     var eventName = event.querySelector('.top1').textContent.toLowerCase();
                     if (eventName.includes(searchTerm)) {
                         event.style.display = 'block';
+                        hasMatchingEvents = true;
                     } else {
                         event.style.display = 'none';
                     }
                 });
+
+                if (!hasMatchingEvents) {
+                    eventsContainer.appendChild(noEventsText);
+                } else {
+                    eventsContainer.removeChild(noEventsText);
+                }
             });
+            
+            // searchButton.addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     searchTerm = searchInput.value.trim().toLowerCase();
+
+            //     var eventVals = document.querySelectorAll('.events-vals');
+            //     eventVals.forEach(function(event) {
+            //         var eventName = event.querySelector('.top1').textContent.toLowerCase();
+            //         if (eventName.includes(searchTerm)) {
+            //             event.style.display = 'block';
+            //         } else {
+            //             event.style.display = 'none';
+            //         }
+            //     });
+            // });
 
             // Preserve the search keyword in the input field after search
             searchInput.addEventListener('input', function() {

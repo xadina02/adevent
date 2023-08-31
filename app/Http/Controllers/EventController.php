@@ -77,9 +77,14 @@ class EventController extends Controller
             'starttime' => 'required',
             'enddate' => 'required|date|after_or_equal:startdate',
             'endtime' => 'required|after:starttime',
+            'participants' => 'required|array|min:1', // Ensure at least one participant is selected
+            'participants.*' => 'integer', // Validate each participant ID
         ], [
             'enddate.after_or_equal' => 'The end date must be equal to or after the start date! ',
             'endtime.after' => 'The end time must be greater than the start time!',
+            'participants.required' => 'Please select at least one participant.',
+            'participants.min' => 'Please select at least one participant.',
+            'participants.*.integer' => 'Invalid participant ID.',
         ]);
 
         $title = $request->input('title');
@@ -99,8 +104,6 @@ class EventController extends Controller
         $event->endtime = $endtime;
         $event->save();
 
-        $redirections = [];
-
         if (!empty($participants)) {
             $eventt = Event::where('title', '=', $title)->first(['id']);
 
@@ -109,60 +112,19 @@ class EventController extends Controller
                 $eventnature->event_id = $eventt['id'];
                 $eventnature->member_id = $participant;
                 $eventnature->save();
-                //QUEUE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
-                
-                //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
-                //
-                // $startTime = Carbon::parse($startdate.' '.$starttime);
-                // $emailTime = $startTime->subMinutes(30);
-                // $this->schedulePreEmail($participant, $title, $emailTime);
 
-                // // Schedule email at the start time
-                // $this->scheduleEmail($participant, $title, $startTime);
             }
             return redirect()->route('mail/send/add/participant',['participants' => implode(',', $participants), 'id' => $eventt['id']]);
-
         }
         else{
-
             return redirect()->route('events/all');
         }
     }
-
-    // public function schedulePreEmail($participant, $title, $emailTime)
-    // {
-    //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
-    //     $data = [
-    //         'subject' => '🚨Reminder',
-    //         'body' => $user['name'].', get ready, it`s almost time for "'.$title.'" event to begin!'
-    //     ];
-    
-    //     Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
-    // }
-
-    // public function scheduleEmail($participant, $title, $emailTime)
-    // {
-    //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
-    //     $data = [
-    //         'subject' => '⚠️Meeting Time⚠️',
-    //         'body' => $user['name'].', it`s time, hope you are set for "'.$title.'" event!'
-    //     ];
-    
-    //     Mail::to($user['email'])->later($emailTime, new ReminderMail($data));
-    // }
     
     public function update(Request $request, $id)
     {
-        // $request->validate([
-
-        //     'name'=>'required',
-        //     'email'=>'required',
-        //     'phone'=>'required',
-
-        // ]);
-        
         $data = $request->all();
-        if (!empty($data['title']) || !empty($data['description']) || !empty($data['startdate']) || !empty($data['starttime']) || !empty($data['enddate']) || !empty($data['endtime'])) {
+        if (!empty($data['title']) || !empty($data['description'])) {
             // At least one of the variables is not empty
             $event = new Event;
             $event = Event::find($id);
@@ -171,18 +133,6 @@ class EventController extends Controller
             }
             if(!empty($data['description'])){
                 $event->description = $data['description'];
-            }
-            if(!empty($data['startdate'])){
-                $event->startdate = $data['startdate'];
-            }
-            if(!empty($data['starttime'])){
-                $event->starttime = $data['starttime'];
-            }
-            if(!empty($data['enddate'])){
-                $event->enddate = $data['enddate'];
-            }
-            if(!empty($data['endtime'])){
-                $event->endtime = $data['endtime'];
             }
             $event->save();
             return redirect()->route('events/all');
