@@ -111,15 +111,6 @@ class EventController extends Controller
                 $eventnature->save();
                 //QUEUE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
                 
-                $user = User::where('id', '=', $participant)
-                    ->first(['name', 'email']);
-                $data = [
-                    'subject'=>'Great Work 🎉',
-                    'body'=>'Hello, '.$user['name'].', you were added to "'.$title.'" event! Stay tuned!'
-                ];
-        
-                Mail::to($user['email'])->send(new NewparticipantMail($data));
-
                 //code to schedule mail to be sent to participants 30 mins before the set time above and at the moment of the set time above
                 //
                 // $startTime = Carbon::parse($startdate.' '.$starttime);
@@ -129,7 +120,8 @@ class EventController extends Controller
                 // // Schedule email at the start time
                 // $this->scheduleEmail($participant, $title, $startTime);
             }
-            return redirect()->route('events/all');
+            return redirect()->route('mail/send/add/participant',['participants' => implode(',', $participants), 'id' => $eventt['id']]);
+
         }
         else{
 

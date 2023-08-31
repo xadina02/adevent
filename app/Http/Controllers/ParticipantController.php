@@ -87,19 +87,6 @@ class ParticipantController extends Controller
             $eventnature->event_id = $id;
             $eventnature->member_id = $participant;
             $eventnature->save();
-            //QUEUE FOLLOWING MAIL TO EXECUTE AFTER REDIRECTION SO USER DOESN'T HAVE TO WAIT FOR PROCESS COMPLETION TO PROCEED WITH ACTIVITES
-
-            $user = User::where('id', '=', $participant)
-                ->first(['name', 'email']);
-            $event = Event::where('id', '=', $id)
-                ->first(['title', 'starttime', 'startdate']);
-            $data = [
-                'subject'=>'Great Work 🎉!',
-                'body'=>'Hello, '.$user['name'].', you were added to "'.$event['title'].'" event! Stay tuned!'
-            ];
-        
-            Mail::to($user['email'])->send(new NewparticipantMail($data));
-
             // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
             // $emailTime = $event['starttime']->subMinutes(30);
             // $this->schedulePreEmail($participant, $title, $emailTime);
@@ -107,7 +94,10 @@ class ParticipantController extends Controller
             // // Schedule email at the start time
             // $this->scheduleEmail($participant, $title, $startTime);
         }
-        return redirect()->route('events/participants', ['id' => $id]);
+
+
+        return redirect()->route('mail/send/event/participant',['participants' => implode(',', $participants), 'id' => $id]);
+
     }
 
     // public function schedulePreEmail($participant, $title, $emailTime)

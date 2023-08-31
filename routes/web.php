@@ -42,4 +42,6 @@ Route::get('events/participants/{id}', [ParticipantController::class, 'index'])-
 Route::post('events/participants/remove/{id}', [ParticipantController::class, 'remove'])->name('events/participants/remove');
 Route::post('events/participants/add/{id}', [ParticipantController::class, 'add'])->name('events/participants/add');
 
-Route::get('mail/send/{name}/{email}', [MailController::class, 'newmember'])->name('mail/send');
+Route::get('mail/send/{name}/{email}', [MailController::class, 'newmember'])->name('mail/send/member');
+Route::get('mail/send}', [MailController::class, 'newparticipant'])->name('mail/send/event/participant');
+Route::get('mail/send2}', [MailController::class, 'newparticipantt'])->name('mail/send/add/participant');

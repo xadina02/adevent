@@ -49,9 +49,11 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
             'phone' => 'required',
-            'avatar' => 'required|image', // Add 'image' validation rule for avatar field
+            'avatar' => 'required|image',
+        ], [
+            'email.regex' => 'The email must be a valid email address of the format example@service.xx!',
         ]);
 
         $data = $request->all();
@@ -69,7 +71,7 @@ class UserController extends Controller
         $member->save();
 
         // return redirect()->route('members/all');
-        return redirect()->route('mail/send',['name' => $data['name'], 'email' => $data['email']]);
+        return redirect()->route('mail/send/member',['name' => $data['name'], 'email' => $data['email']]);
     }
 
     public function update(Request $request, $id)
@@ -136,10 +138,11 @@ class UserController extends Controller
 
         if(strcmp($data['email'], $details['email']) == 0 && strcmp($data['password'], $details['password']) == 0){
             Session::put('logstate', 'true');
-            return redirect()->route('members/all');
+            return redirect()->route('events/all');
         }
         else{
-            return redirect()->route('homepage');
+            Session::put('failure', "Sorry! Your credentials don't match our records. Try again!");
+            return redirect()->route('signup');
         }
     }
 
