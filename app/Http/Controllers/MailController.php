@@ -87,9 +87,11 @@ class MailController extends Controller
             $emailTime = $startTime->subMinutes(30);
 
             Mail::to($user['email'])->send(new NewparticipantMail($data));
-            
+
             // Schedule email 30 minutes before the start time
             $this->schedulePreEmail($participant, $event['title'], $emailTime);
+
+            // sleep(1800); 
 
             // Schedule email at the start time
             $this->scheduleEmail($participant, $event['title'], $startTime);
