@@ -91,8 +91,6 @@ class MailController extends Controller
             // Schedule email 30 minutes before the start time
             $this->schedulePreEmail($participant, $event['title'], $emailTime);
 
-            // sleep(1800); 
-
             // Schedule email at the start time
             $this->scheduleEmail($participant, $event['title'], $startTime);
 
