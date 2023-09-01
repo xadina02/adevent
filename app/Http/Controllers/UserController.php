@@ -40,85 +40,106 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $data = User::where('id', '=', $id)
-                ->first(['id', 'name', 'email', 'phone']);
-        return view('edit_member', compact('data'));
+        if(Session::has('logstate')){
+            $data = User::where('id', '=', $id)
+                    ->first(['id', 'name', 'email', 'phone']);
+            return view('edit_member', compact('data'));
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function create(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
-            'phone' => 'required',
-            'avatar' => 'required|image',
-        ], [
-            'email.regex' => 'The email must be a valid email address of the format example@service.xx!',
-        ]);
+        if(Session::has('logstate')){
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
+                'phone' => 'required',
+                'avatar' => 'required|image',
+            ], [
+                'email.regex' => 'The email must be a valid email address of the format example@service.xx!',
+            ]);
 
-        $data = $request->all();
-        
-        // Retrieve the blob contents of the image file
-        // $avatarData = file_get_contents($data['avatar']->getRealPath());
+            $data = $request->all();
+            
+            // Retrieve the blob contents of the image file
+            // $avatarData = file_get_contents($data['avatar']->getRealPath());
 
-        $member = new User;
-        $member->name = $data['name'];
-        $member->email = $data['email'];
-        $member->phone = $data['phone'];
-        // $member->avatar = $avatarData;
-        $member->avatar = file_get_contents($data['avatar']);
-        $member->role = "member";
-        $member->save();
+            $member = new User;
+            $member->name = $data['name'];
+            $member->email = $data['email'];
+            $member->phone = $data['phone'];
+            // $member->avatar = $avatarData;
+            $member->avatar = file_get_contents($data['avatar']);
+            $member->role = "member";
+            $member->save();
 
-        // return redirect()->route('members/all');
-        return redirect()->route('mail/send/member',['name' => $data['name'], 'email' => $data['email']]);
+            // return redirect()->route('members/all');
+            return redirect()->route('mail/send/member',['name' => $data['name'], 'email' => $data['email']]);
+        }
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
+        if(Session::has('logstate')){
+            // $request->validate([
 
-        //     'name'=>'required',
-        //     'email'=>'required',
-        //     'phone'=>'required',
+            //     'name'=>'required',
+            //     'email'=>'required',
+            //     'phone'=>'required',
 
-        // ]);
-        
-        $data = $request->all();
-        if (!empty($data['name']) || !empty($data['email']) || !empty($data['phone'])) {
-            // At least one of the variables is not empty
-            $member = new User;
-            $member = User::find($id);
-            if(!empty($data['name'])){
-                $member->name = $data['name'];
+            // ]);
+            
+            $data = $request->all();
+            if (!empty($data['name']) || !empty($data['email']) || !empty($data['phone'])) {
+                // At least one of the variables is not empty
+                $member = new User;
+                $member = User::find($id);
+                if(!empty($data['name'])){
+                    $member->name = $data['name'];
+                }
+                if(!empty($data['email'])){
+                    $member->email = $data['email'];
+                }
+                if(!empty($data['phone'])){
+                    $member->phone = $data['phone'];
+                }
+                $member->save();
+                return redirect()->route('members/all');
             }
-            if(!empty($data['email'])){
-                $member->email = $data['email'];
+            else{
+                Session::put('failure', 'Both fields cannot be empty!!');
+                return redirect()->route('members/edit', ['id' => $id]);
             }
-            if(!empty($data['phone'])){
-                $member->phone = $data['phone'];
-            }
-            $member->save();
-            return redirect()->route('members/all');
         }
         else{
-            return redirect()->route('members/edit', ['id' => $id]);
+            return redirect()->route('homepage');
         }
     }
     
     public function remove($id)
     {
-        $member = User::find($id);
-        $member->delete();
-        
-        $eventnature = EventNature::pluck('member_id')->all();
+        if(Session::has('logstate')){
+            $member = User::find($id);
+            $member->delete();
+            
+            $eventnature = EventNature::pluck('member_id')->all();
 
-        if (in_array($id, $eventnature)) {
-            $eventnature1 = EventNature::where('member_id', '=', $id);
-            $eventnature1->delete();
+            if (in_array($id, $eventnature)) {
+                $eventnature1 = EventNature::where('member_id', '=', $id);
+                $eventnature1->delete();
+            }
+
+            return redirect()->route('members/all');
         }
-
-        return redirect()->route('members/all');
+        else{
+            return redirect()->route('homepage');
+        }
     }
 
     public function validatelogin(Request $request)

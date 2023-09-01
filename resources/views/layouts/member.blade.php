@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div id="nav3">
-            <a href="{{ route('homepage') }}"><button id="nav-button">LOGOUT</button></a>
+            <a href="{{ route('logout') }}"><button id="nav-button">LOGOUT</button></a>
         </div>
     </div>
 </nav>

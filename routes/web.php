@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('home', [PagesController::class, 'home'])->name('homepage');
 Route::get('admin/login', [PagesController::class, 'signup'])->name('signup');
 Route::get('admin/forgot_password', [PagesController::class, 'fpassd'])->name('forgotpasswd');
+Route::get('admin/logout', [PagesController::class, 'logout'])->name('logout');
 
 Route::get('members/', [UserController::class, 'display'])->name('members/all');
 Route::get('members/registration', [UserController::class, 'form'])->name('members/add');
@@ -43,5 +44,5 @@ Route::post('events/participants/remove/{id}', [ParticipantController::class, 'r
 Route::post('events/participants/add/{id}', [ParticipantController::class, 'add'])->name('events/participants/add');
 
 Route::get('mail/send/{name}/{email}', [MailController::class, 'newmember'])->name('mail/send/member');
-Route::get('mail/send}', [MailController::class, 'newparticipant'])->name('mail/send/event/participant');
-Route::get('mail/send2}', [MailController::class, 'newparticipantt'])->name('mail/send/add/participant');
+Route::get('mail/send', [MailController::class, 'newparticipant'])->name('mail/send/event/participant');
+Route::get('mail/send2', [MailController::class, 'newparticipantt'])->name('mail/send/add/participant');

@@ -9,7 +9,6 @@ class PagesController extends Controller
 {
     public function home()
     {   
-        Session::forget('logstate');
         return view('homepage');
     }
 
@@ -21,5 +20,11 @@ class PagesController extends Controller
     public function fpassd()
     {
         return view('forgot_password');
+    }
+
+    public function logout()
+    {
+        Session::forget('logstate');
+        return redirect()->route('homepage');
     }
 }

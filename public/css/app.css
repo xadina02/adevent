@@ -10,7 +10,7 @@ body{
 }
 
 nav{
-    background-color: #770A3E;
+    background-color: #350d36;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
@@ -80,7 +80,7 @@ nav{
     flex-shrink: 0;
     border-radius: 25px;
     background: #FEFEFE;
-    color: #770A3E;
+    color: #350d36;
     font-family: Inter;
     font-size: 18px;
     font-style: normal;
@@ -114,7 +114,7 @@ section{
 }
 
 #heading{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inter;
     font-size: 35px;
     font-style: normal;
@@ -145,7 +145,7 @@ span{
     height: 50px;
     flex-shrink: 0;
     border-radius: 20px;
-    background: #770A3E;
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 19px;
@@ -181,7 +181,7 @@ span{
 }
 
 #form-head{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 32px;
     font-style: normal;
@@ -205,7 +205,7 @@ span{
 }
 
 .lab{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 20px;
     font-style: normal;
@@ -241,7 +241,7 @@ span{
     background: #FEFEFE;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding-left: 10px;
-    border: 1px solid #770A3E;
+    border: 1px solid #350d36;
     display: flex;
 }
 
@@ -380,7 +380,7 @@ hr{
     height: 42px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #770A3E;
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 21px;
@@ -460,8 +460,8 @@ hr{
     flex-shrink: 0;
     border-radius: 10px;
     /* background: #FFFFFF;
-    color: #770A3E; */
-    background: #770A3E;
+    color: #350d36; */
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 25px;
@@ -474,7 +474,7 @@ hr{
     height: 40px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #000;
+    background: #080808;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 25px;
@@ -528,7 +528,7 @@ hr{
 
 .top1{
     margin-top: 8px;
-    color: #770A3E;
+    color: #350d36;
     font-style: normal;
     font-weight: 700;
 }
@@ -571,7 +571,7 @@ hr{
     justify-content: space-between;
     margin-top: -25px;
     width: 300px;
-    color: #770A3E;
+    color: #350d36;
     font-family: Inter;
     font-size: 15px;
     font-style: normal;
@@ -583,7 +583,7 @@ hr{
     height: 40px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #000;
+    background: #080808;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 25px;
@@ -597,7 +597,7 @@ hr{
 }
 
 #add-member-head{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 24px;
     font-style: normal;
@@ -628,7 +628,7 @@ hr{
 }
 
 .add-member-label{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 18px;
     font-style: normal;
@@ -703,7 +703,7 @@ hr{
 }
 
 .add-event-label{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 16px;
     font-style: normal;
@@ -723,7 +723,7 @@ hr{
 
 .add-event-head{
     margin-top: -10px;
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 24px;
     font-style: normal;
@@ -839,7 +839,7 @@ hr{
 }
 
 .headingf{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 24px;
     font-style: normal;
@@ -870,7 +870,7 @@ hr{
     margin-left: -381px;
     margin-top: -14px;
     border-radius: 10px;
-    background-color: #770A3E;
+    background-color: #350d36;
 }
 
 #underline2{
@@ -879,7 +879,7 @@ hr{
     margin-left: 655.5px;
     margin-top: -14px;
     border-radius: 10px;
-    background-color: #770A3E;
+    background-color: #350d36;
 }
 
 .up-box{
@@ -913,7 +913,7 @@ hr{
 .finale{
     margin-top: 5px;
     margin-left: 5px;
-    color: #770A3E;
+    color: #350d36;
 }
 
 .down-box{
@@ -989,7 +989,7 @@ hr{
 }
 
 .part-email{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 16px;
     font-style: normal;
@@ -1032,7 +1032,7 @@ hr{
     height: 33px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #770A3E;
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 15px;
@@ -1084,7 +1084,7 @@ hr{
     height: 31px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #770A3E;
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 17px;
@@ -1149,7 +1149,7 @@ width: 90%;
 }
 
 .p23{
-    color: #770A3E;
+    color: #350d36;
     font-family: Inknut Antiqua;
     font-size: 13px;
     font-style: normal;
@@ -1162,7 +1162,7 @@ width: 90%;
     height: 33px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #770A3E;
+    background: #350d36;
     color: #FFF;
     font-family: Inknut Antiqua;
     font-size: 19px;
@@ -1284,7 +1284,7 @@ width: 90%;
 }
 
 #no-events-text{
-    color: #770A3E;
+    color: #350d36;
 }
 
 footer{
