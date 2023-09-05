@@ -47,7 +47,9 @@ class MailController extends Controller
             ];
 
             Mail::to($user['email'])->send(new NewparticipantMail($data));
-
+            
+            // Change the code into a cron job scheduling mechanism
+            
             // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
             $startTime = Carbon::parse($event['startdate'].' '.$event['starttime'])->subHour();
             $emailTime = $startTime->subMinutes(30);
