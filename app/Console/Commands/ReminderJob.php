@@ -31,7 +31,7 @@ class ReminderJob extends Command
     {
         //pull every event from the database
         $currentDate = Carbon::now()->format('Y-m-d');
-        $currentDateTime = Carbon::now();
+        // $currentDateTime = Carbon::now();
         $targetTime = Carbon::now()->format('H:i:s');;
 
         $events = Event::where('startdate', $currentDate)
@@ -58,7 +58,7 @@ class ReminderJob extends Command
                     'body' => $user['name'].', it is time, hope you are set for "'.$title.'" event?!'
                 ];
                 
-                Mail::to($user['email'])->later($startTime, new ReminderMail($data));
+                Mail::to($user['email'])->send(new ReminderMail($data));
             }
         }
     }

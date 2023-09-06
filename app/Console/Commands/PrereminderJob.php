@@ -32,7 +32,7 @@ class PrereminderJob extends Command
         //pull every event from the database
         $currentDate = Carbon::now()->format('Y-m-d');
         $currentDateTime = Carbon::now();
-        $targetTime = $currentDateTime->subMinutes(30)->format('H:i:s');
+        $targetTime = $currentDateTime->addMinutes(30)->format('H:i:s');
 
         $events = Event::where('startdate', $currentDate)
             ->where('starttime', $targetTime)
@@ -61,7 +61,7 @@ class PrereminderJob extends Command
                     'body' => $user['name'].', get ready, it is almost time for "'.$title.'" event to begin! That is in 30 minutes from now'
                 ];
                 
-                Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
+                Mail::to($user['email'])->send(new PreReminderMail($data));
             }
         }
     }
