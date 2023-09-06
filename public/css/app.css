@@ -542,7 +542,7 @@ hr{
 
 .top22{
     margin-top: -0.5px;
-    color: #000;
+    color: #f80000;
     font-style: normal;
     font-weight: 900;
     text-decoration: underline;
@@ -553,7 +553,7 @@ hr{
 }
 
 .top2-sub{
-    color: #000;
+    color: green;
     font-style: normal;
     font-weight: 900;
 }
