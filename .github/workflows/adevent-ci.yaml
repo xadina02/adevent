@@ -1,0 +1,26 @@
+name: Adevent CI
+
+on:
+  push:
+    branches:
+      - main
+      - adina
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1.7'
+
+      - name: Install Dependencies
+        run: composer install
+
+      - name: Run Tests
+        run: vendor/bin/phpunit
