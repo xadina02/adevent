@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - adina
 
 jobs:
   build:
@@ -20,7 +19,7 @@ jobs:
           php-version: '8.1.7'
 
       - name: Install Dependencies
-        run: composer install
+        run: composer install 
 
       - name: Run Tests
         run: vendor/bin/phpunit
