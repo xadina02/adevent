@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: composer install 
 
-      - name: Run Application
-        run: php artisan serve
+      - name: Run PHP_CodeSniffer
+        run: vendor/bin/phpcs --standard=PSR12 app
 
       # - name: Run Tests
       #   run: vendor/bin/phpunit
