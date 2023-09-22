@@ -9,5 +9,5 @@ class EventNature extends Model
 {
     use HasFactory;
 
-    protected string $table = 'event_natures';
+    // protected string $table = 'event_natures';
 }

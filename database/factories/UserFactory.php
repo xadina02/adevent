@@ -18,7 +18,7 @@ class UserFactory extends Factory
      *
      * @psalm-var User::class
      */
-    protected string $model = User::class;
+    // protected string $model = User::class;
 
     /**
      * @return (\Illuminate\Support\Carbon|string)[]

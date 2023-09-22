@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
+use App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,7 +18,7 @@ class AdminFactory extends Factory
      *
      * @psalm-var Admin::class
      */
-    protected string $model = Admin::class;
+    protected string $model = User::class;
 
     /**
      * @return (\Illuminate\Support\Carbon|string)[]

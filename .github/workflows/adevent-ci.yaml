@@ -25,7 +25,7 @@ jobs:
         run: php artisan migrate:refresh --force
 
       - name: Run Seeders
-        run: php artisan db:seed --force
+        run: php artisan db:seed
 
       - name: Run Route Tests
-        run: php artisan test --group=routes 
+        run: php artisan test --group=routes

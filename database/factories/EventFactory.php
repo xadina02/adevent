@@ -19,7 +19,7 @@ class EventFactory extends Factory
      *
      * @psalm-var Event::class
      */
-    protected string $model = Event::class;
+    // protected string $model = Event::class;
 
     /**
      * @return string[]
