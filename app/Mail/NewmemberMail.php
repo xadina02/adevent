@@ -12,8 +12,6 @@ class NewmemberMail extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public $data = [];
-
     /**
      * Create a new message instance.
      */

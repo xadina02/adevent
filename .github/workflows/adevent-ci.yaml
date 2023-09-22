@@ -22,7 +22,7 @@ jobs:
         run: composer install 
 
       - name: Run Migration
-        run: php artisan migrate:refresh --force
+        run: php artisan migrate:refresh
 
       - name: Run Seeders
         run: php artisan db:seed
