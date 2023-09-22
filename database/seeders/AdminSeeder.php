@@ -8,7 +8,7 @@ use App\Models\User;
 class AdminSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds cmt.
      *
      * @return void
      */
