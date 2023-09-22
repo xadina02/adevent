@@ -15,7 +15,7 @@ return new class extends Migration
             // $table->id();
             $table->integer('event_id');
             $table->integer('member_id');
-            $table->string('attendance')->nullable()->default(NULL);
+            $table->string('attendance')->nullable()->default(null);
             $table->timestamps();
             // $table->timestamps();
         });

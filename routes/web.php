@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

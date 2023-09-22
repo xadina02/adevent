@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Event;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
@@ -16,9 +16,16 @@ class EventFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
+     *
+     * @psalm-var Event::class
      */
-    protected $model = Event::class;
+    protected string $model = Event::class;
 
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{title: string, description: string, startdate: string, starttime: string, enddate: string, endtime: string}
+     */
     public function definition(): array
     {
         return [

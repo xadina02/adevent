@@ -2,79 +2,67 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-use Mail;
-use App\Mail\NewparticipantMail;
-use App\Mail\PreReminderMail;
-use App\Mail\ReminderMail;
-use Illuminate\Support\Facades\Session;
 use App\Models\Event;
 use App\Models\EventNature;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class EventController extends Controller
 {
-    public function form()
+    public function form(): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $members = User::where('role', '=', 'member')
-                    ->orderBy('id', 'desc')
-                    ->get();
+                ->orderBy('id', 'desc')
+                ->get();
 
             return view('add_event', compact('members'));
-        }
-        else{
+        } else {
             return redirect()->route('homepage');
         }
     }
 
-    public function display()
+    public function display(): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $events = Event::orderBy('id', 'desc')
-                    ->get();
+                ->get();
 
             return view('events', compact('events'));
-        }
-        else{
+        } else {
             return redirect()->route('homepage');
         }
     }
 
-    public function show($id)
+    public function show($id): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $data = Event::where('id', '=', $id)
-                    ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
-
+                ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
 
             $currentDateTime = Carbon::now('UTC');
-            $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
+            $time = Carbon::parse($data->startdate.' '.$data->starttime);
             $timediff = $time->diffInMinutes($currentDateTime);
 
-            if($time->isSameDay($currentDateTime) && ($timediff < 100)){
+            if ($time->isSameDay($currentDateTime) && ($timediff < 100)) {
                 // dd($timediff, $currentDateTime, $time);
                 return view('not_edit_event', compact('data'));
-            }
-            elseif($time->lessThan($currentDateTime)){
+            } elseif ($time->lessThan($currentDateTime)) {
                 return view('not_edit_event', compact('data'));
-            }
-            else{
+            } else {
                 // dd($timediff, $currentDateTime, $time);
                 return view('edit_event', compact('data'));
             }
-        }
-        else{
+        } else {
             return redirect()->route('homepage');
         }
     }
 
-    public function create(Request $request)
+    public function create(Request $request): \Illuminate\Http\RedirectResponse
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
@@ -100,7 +88,7 @@ class EventController extends Controller
             $endtime = $request->input('endtime');
             $participants = $request->input('participants');
 
-            $event = new Event;
+            $event = new Event();
             $event->title = $title;
             $event->description = $description;
             $event->startdate = $startdate;
@@ -112,49 +100,48 @@ class EventController extends Controller
             $eventt = Event::where('title', '=', $title)->first(['id']);
 
             foreach ($participants as $participant) {
-                $eventnature = new EventNature;
+                $eventnature = new EventNature();
                 $eventnature->event_id = $eventt['id'];
                 $eventnature->member_id = $participant;
                 $eventnature->save();
-
             }
-            return redirect()->route('mail/send/add/participant',['participants' => implode(',', $participants), 'id' => $eventt['id']]);
-        }
-        else{
+
+            return redirect()->route('mail/send/add/participant', ['participants' => implode(',', $participants), 'id' => $eventt['id']]);
+        } else {
             return redirect()->route('homepage');
         }
     }
-    
-    public function update(Request $request, $id)
+
+    public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $data = $request->all();
-            if (!empty($data['title']) || !empty($data['description'])) {
+            if (! empty($data['title']) || ! empty($data['description'])) {
                 // At least one of the variables is not empty
-                $event = new Event;
+                new Event();
                 $event = Event::find($id);
-                if(!empty($data['title'])){
+                if (! empty($data['title'])) {
                     $event->title = $data['title'];
                 }
-                if(!empty($data['description'])){
+                if (! empty($data['description'])) {
                     $event->description = $data['description'];
                 }
                 $event->save();
+
                 return redirect()->route('events/all');
-            }
-            else{
+            } else {
                 Session::put('failure', 'Both fields cannot be empty!!');
+
                 return redirect()->route('events/edit', ['id' => $id]);
             }
-        }
-        else{
+        } else {
             return redirect()->route('homepage');
         }
     }
-    
-    public function delete($id)
+
+    public function delete($id): \Illuminate\Http\RedirectResponse
     {
-        if(Session::has('logstate')){
+        if (Session::has('logstate')) {
             $event = Event::find($id);
             $event->delete();
 
@@ -166,8 +153,7 @@ class EventController extends Controller
             }
 
             return redirect()->route('events/all');
-        }
-        else{
+        } else {
             return redirect()->route('homepage');
         }
     }

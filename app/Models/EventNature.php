@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class EventNature extends Model
 {
     use HasFactory;
-    protected $table = 'event_natures';
+
+    protected string $table = 'event_natures';
 }

@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
-    public function home()
-    {   
+    public function home(): \Illuminate\Contracts\View\View
+    {
         return view('homepage');
     }
 
-    public function signup()
+    public function signup(): \Illuminate\Contracts\View\View
     {
         return view('login');
     }
 
-    public function fpassd()
+    public function fpassd(): \Illuminate\Contracts\View\View
     {
         return view('forgot_password');
     }
 
-    public function logout()
+    public function logout(): \Illuminate\Http\RedirectResponse
     {
         Session::forget('logstate');
+
         return redirect()->route('homepage');
     }
 }
