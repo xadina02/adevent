@@ -21,6 +21,12 @@ jobs:
       - name: Install Dependencies
         run: composer install 
 
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
       - name: Run Migration
         run: php artisan migrate:refresh --force
 
