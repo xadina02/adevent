@@ -11,10 +11,14 @@ class MockDatabaseServiceProvider extends ServiceProvider
     {
         // Define a mock connection
         DB::extend('mock', function ($config) {
-            return new \Illuminate\Database\Connection(null);
+            return new \Illuminate\Database\SQLiteConnection($config);
         });
 
         // Set the default connection to the mock connection
-        config(['database.default' => 'mock']);
+        config(['database.connections.mock' => [
+            'driver' => 'mock',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]]);
     }
 }
