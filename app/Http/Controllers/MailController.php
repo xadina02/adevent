@@ -8,7 +8,6 @@ use App\Mail\PreReminderMail;
 use App\Mail\ReminderMail;
 use App\Models\Event;
 // use App\Models\User;
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mail;
