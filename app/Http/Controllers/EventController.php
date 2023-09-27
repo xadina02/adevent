@@ -43,7 +43,7 @@ class EventController extends Controller
                 ->first(['id', 'title', 'description', 'startdate', 'starttime', 'enddate', 'endtime']);
 
             $currentDateTime = Carbon::now('UTC');
-            $time = Carbon::parse($data->startdate.' '.$data->starttime);
+            $time = Carbon::parse($data->startdate . ' ' . $data->starttime);
             $timediff = $time->diffInMinutes($currentDateTime);
 
             if ($time->isSameDay($currentDateTime) && ($timediff < 100)) {

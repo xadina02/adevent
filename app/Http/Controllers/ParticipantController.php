@@ -40,7 +40,7 @@ class ParticipantController extends Controller
 
             // return view('participants', compact('participants', 'members', 'event'));
             $currentDateTime = Carbon::now('UTC');
-            $time = Carbon::parse($event->startdate.' '.$event->starttime);
+            $time = Carbon::parse($event->startdate . ' ' . $event->starttime);
             $timediff = $time->diffInMinutes($currentDateTime);
 
             if ($time->isSameDay($currentDateTime) && ($timediff < 100)) {

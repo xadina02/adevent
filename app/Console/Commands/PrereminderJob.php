@@ -44,7 +44,7 @@ class PrereminderJob extends Command
 
             // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
             // $currentDateTime = Carbon::now();
-            Carbon::parse($event['startdate'].' '.$event['starttime'])->subHour();
+            Carbon::parse($event['startdate'] . ' ' . $event['starttime'])->subHour();
             // $emailTime = $startTime->subMinutes(30);
 
             // Schedule email 30 minutes before the start time
@@ -57,7 +57,7 @@ class PrereminderJob extends Command
                 $user = User::where('id', '=', $participant)->first(['name', 'email']);
                 $data = [
                     'subject' => '🚨Reminder',
-                    'body' => $user['name'].', get ready, it is almost time for "'.$title.'" event to begin! That is in 30 minutes from now',
+                    'body' => $user['name'] . ', get ready, it is almost time for "' . $title . '" event to begin! That is in 30 minutes from now',
                 ];
 
                 Mail::to($user['email'])->send(new PreReminderMail($data));

@@ -44,7 +44,7 @@ class ReminderJob extends Command
 
             // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
             // $currentDateTime = Carbon::now();
-            Carbon::parse($event['startdate'].' '.$event['starttime'])->subHour();
+            Carbon::parse($event['startdate'] . ' ' . $event['starttime'])->subHour();
             // $emailTime = $startTime->subMinutes(30);
 
             // Schedule email 30 minutes before the start time
@@ -54,7 +54,7 @@ class ReminderJob extends Command
                 $user = User::where('id', '=', $participant)->first(['name', 'email']);
                 $data = [
                     'subject' => '⚠️Meeting Time⚠️',
-                    'body' => $user['name'].', it is time, hope you are set for "'.$title.'" event?!',
+                    'body' => $user['name'] . ', it is time, hope you are set for "' . $title . '" event?!',
                 ];
 
                 Mail::to($user['email'])->send(new ReminderMail($data));

@@ -18,7 +18,7 @@ class MailController extends Controller
     {
         $data = [
             'subject' => 'New Member Alert!🎉',
-            'body' => 'Hi, '.$name.', welcome to the Adevent team!',
+            'body' => 'Hi, ' . $name . ', welcome to the Adevent team!',
         ];
 
         Mail::to($email)->send(new NewmemberMail($data));
@@ -42,7 +42,7 @@ class MailController extends Controller
 
             $data = [
                 'subject' => 'Great Work 🎉!',
-                'body' => 'Hello, '.$user['name'].', you were added to "'.$event['title'].'" event! Stay tuned!',
+                'body' => 'Hello, ' . $user['name'] . ', you were added to "' . $event['title'] . '" event! Stay tuned!',
             ];
 
             Mail::to($user['email'])->send(new NewparticipantMail($data));
@@ -79,7 +79,7 @@ class MailController extends Controller
 
             $data = [
                 'subject' => 'Great Work 🎉!',
-                'body' => 'Hello, '.$user['name'].', you were added to "'.$event['title'].'" event! Stay tuned!',
+                'body' => 'Hello, ' . $user['name'] . ', you were added to "' . $event['title'] . '" event! Stay tuned!',
             ];
 
             // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
