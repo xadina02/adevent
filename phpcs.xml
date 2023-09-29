@@ -7,11 +7,27 @@
 
     <!-- directories to check -->
     <file>app</file>
+    <file>bootstrap</file>
+    <file>config</file>
+    <file>database</file>
+    <file>resources</file>
+    <file>routes</file>
     <file>tests</file>
+
+    <!-- files to exclude -->
+    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>bootstrap/autoload.php</exclude-pattern>
+    <exclude-pattern>*/migrations/*</exclude-pattern>
+    <exclude-pattern>*/seeds/*</exclude-pattern>
+    <exclude-pattern>*.blade.php</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
+
+    <!-- Show progression -->
+    <arg value="p"/>
 
     <!-- Add rules from slevomat 
     https://cylab.be/blog/169/detect-unnecessary-use-statements-with-php-codesniffer -->
-    <config name="installed_paths" value="../../slevomat/coding-standard"/>
-    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/>
+    <!-- <config name="installed_paths" value="../../slevomat/coding-standard"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/> -->
     
 </ruleset>
