@@ -7,7 +7,6 @@ use App\Models\EventNature;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use App\Mail\ReminderMail;
 
 class PrereminderJob extends Command
 {
@@ -35,11 +34,11 @@ class PrereminderJob extends Command
             $currentDateTime = Carbon::now();
         $targetTime = $currentDateTime->addMinutes(30)->format('H:i:s');
 
-    $events = Event::where('startdate', $currentDate)
+        $events = Event::where('startdate', $currentDate)
             ->where('starttime', $targetTime)
             ->get(['id', 'title', 'startdate', 'starttime']);
 
-foreach ($events as $event) {
+        foreach ($events as $event) {
             $participants = EventNature::where('member_id', '=', $event['id'])
                 ->get(['member_id']);
 
