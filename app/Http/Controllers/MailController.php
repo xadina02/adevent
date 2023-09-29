@@ -17,6 +17,7 @@ class MailController extends Controller
 {
     public function newmember($name, $email): \Illuminate\Http\RedirectResponse
     {
+        $book = ['cahier', 'livre'];
         $data = [
             'subject' => 'New Member Alert!🎉',
             'body' => 'Hi, ' . $name . ', welcome to the Adevent team!',
