@@ -7,12 +7,11 @@ use App\Mail\NewparticipantMail;
 use App\Mail\PreReminderMail;
 use App\Mail\ReminderMail;
 use App\Models\Event;
-use App\Models\EventNature;
 // use App\Models\User;
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mail;
+use App\Models\EventNature;
 
 class MailController extends Controller
 {

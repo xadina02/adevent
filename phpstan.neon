@@ -1,0 +1,9 @@
+includes:
+    - vendor/phpstan/phpstan/extension.neon
+    - vendor/phpstan/phpstan-laravel/extension.neon
+
+services:
+    -
+        class: PHPStan\Levels\LevelsExtension
+        tags:
+            - phpstan.extensions.extension
