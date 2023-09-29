@@ -31,14 +31,14 @@ class PrereminderJob extends Command
     {
         //pull every event from the database
         $currentDate = Carbon::now()->format('Y-m-d');
-        $currentDateTime = Carbon::now();
+            $currentDateTime = Carbon::now();
         $targetTime = $currentDateTime->addMinutes(30)->format('H:i:s');
 
-        $events = Event::where('startdate', $currentDate)
+    $events = Event::where('startdate', $currentDate)
             ->where('starttime', $targetTime)
             ->get(['id', 'title', 'startdate', 'starttime']);
 
-        foreach ($events as $event) {
+foreach ($events as $event) {
             $participants = EventNature::where('member_id', '=', $event['id'])
                 ->get(['member_id']);
 
