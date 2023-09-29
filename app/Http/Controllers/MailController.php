@@ -11,7 +11,7 @@ use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mail;
-use App\Models\EventNature;
+use Illuminate\Console\Command;
 
 class MailController extends Controller
 {
