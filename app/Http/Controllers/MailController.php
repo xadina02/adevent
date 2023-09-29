@@ -7,7 +7,7 @@ use App\Mail\NewparticipantMail;
 use App\Mail\PreReminderMail;
 use App\Mail\ReminderMail;
 use App\Models\Event;
-use App\MOdels\EventNature;
+use App\Models\EventNature;
 // use App\Models\User;
 
 use Carbon\Carbon;
