@@ -12,6 +12,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mail;
 use Illuminate\Console\Command;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\PagesController;
 
 class MailController extends Controller
 {
