@@ -17,7 +17,6 @@ class MailController extends Controller
 {
     public function newmember($name, $email): \Illuminate\Http\RedirectResponse
     {
-        $book = ['cahier', 'livre'];
         $data = [
             'subject' => 'New Member Alert!🎉',
             'body' => 'Hi, ' . $name . ', welcome to the Adevent team!',
@@ -81,7 +80,7 @@ class MailController extends Controller
 
             $data = [
                 'subject' => 'Great Work 🎉!',
-                'body' => 'Hello, ' . $user['name'] . ', you were added to "' . $event['title'] . '" event! Stay tuned!',
+                'body' => 'Hello, ' . $user['name'] . $title . ', you were added to "' . $event['title'] . '" event! Stay tuned!',
             ];
 
             // $startTime = Carbon::parse($event['startdate'] . ' ' . $event['starttime']);
