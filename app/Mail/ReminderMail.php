@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+$data = [];
 class ReminderMail extends Mailable implements ShouldQueue
 {
     use Queueable;
@@ -17,6 +18,7 @@ class ReminderMail extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      */
+
     public function __construct($data)
     {
         $this->data = $data;
