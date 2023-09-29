@@ -18,7 +18,6 @@ class ReminderMail extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      */
-
     public function __construct($data)
     {
         $this->data = $data;
@@ -30,7 +29,7 @@ class ReminderMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->data['subject'],
+            subject: $this->data->subject,
         );
     }
 

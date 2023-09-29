@@ -29,7 +29,7 @@ class PreReminderMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->data['subject'],
+            subject: $this->data->subject,
         );
     }
 
