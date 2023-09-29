@@ -1,0 +1,17 @@
+includes:
+    - vendor/phpstan/phpstan/extension.neon
+
+services:
+    -
+        class: PHPStan\Levels\LevelsExtension
+        tags:
+            - phpstan.extensions.extension
+
+parameters:
+    levels:
+        7: true
+        8: false
+
+checkDuplicateBranches: true
+checkDuplicateStrings: true
+checkDuplicateSwitchCases: true

@@ -49,8 +49,8 @@ class MailController extends Controller
 
             // Change the code into a cron job scheduling mechanism
 
-            // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
-            // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime'])->subHour();
+            // $startTime = Carbon::parse($event['startdate'] . ' ' . $event['starttime']);
+            // $startTime = Carbon::parse($event['startdate'] . ' ' . $event['starttime'])->subHour();
             // $emailTime = $startTime->subMinutes(30);
 
             // Schedule email 30 minutes before the start time
@@ -82,8 +82,8 @@ class MailController extends Controller
                 'body' => 'Hello, ' . $user['name'] . ', you were added to "' . $event['title'] . '" event! Stay tuned!',
             ];
 
-            // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime']);
-            // $startTime = Carbon::parse($event['startdate'].' '.$event['starttime'])->subHour();
+            // $startTime = Carbon::parse($event['startdate'] . ' ' . $event['starttime']);
+            // $startTime = Carbon::parse($event['startdate'] . ' ' . $event['starttime'])->subHour();
             // $emailTime = $startTime->subMinutes(30);
 
             Mail::to($user['email'])->send(new NewparticipantMail($data));
@@ -103,7 +103,7 @@ class MailController extends Controller
     //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
     //     $data = [
     //         'subject' => '🚨Reminder',
-    //         'body' => $user['name'].', get ready, it is almost time for "'.$title.'" event to begin! That is in 30 minutes from now'
+    //         'body' => $user['name'] . ', get ready, it is almost time for "' . $title . '" event to begin! That is in 30 minutes from now'
     //     ];
 
     //     Mail::to($user['email'])->later($emailTime, new PreReminderMail($data));
@@ -114,7 +114,7 @@ class MailController extends Controller
     //     $user = User::where('id', '=', $participant)->first(['name', 'email']);
     //     $data = [
     //         'subject' => '⚠️Meeting Time⚠️',
-    //         'body' => $user['name'].', it is time, hope you are set for "'.$title.'" event?!'
+    //         'body' => $user['name'] . ', it is time, hope you are set for "' . $title . '" event?!'
     //     ];
 
     //     Mail::to($user['email'])->later($startTime, new ReminderMail($data));
