@@ -7,6 +7,7 @@ use App\Models\EventNature;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use App\Mail\ReminderMail;
 
 class PrereminderJob extends Command
 {
