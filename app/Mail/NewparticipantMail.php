@@ -9,6 +9,9 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+use App\Models\User;
+use Carbon\Carbon;
+
 $data = [];
 class NewparticipantMail extends Mailable implements ShouldQueue
 {
