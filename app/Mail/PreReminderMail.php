@@ -9,7 +9,6 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-$data = [];
 class PreReminderMail extends Mailable implements ShouldQueue
 {
     use Queueable;
