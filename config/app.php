@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\MockDatabaseServiceProvider::class,
+
+        Illuminate\Mail\MailServiceProvider::class,
     ])->toArray(),
 
     /*
